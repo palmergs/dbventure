@@ -1,0 +1,25 @@
+.grow-1
+  %h1.w-full
+    Listing stages
+
+  %table.w-full
+    %thead
+      %tr
+        %th ID
+        %th Name
+        %th Description
+        %th
+
+    %tbody
+      - @stages.each do |stage|
+        %tr
+          %td= stage.id
+          %td= stage.name
+          %td= stage.description
+          %td
+            =link_to 'Show', stage, class: 'btn action-show'
+            =link_to 'Edit', edit_stage_path(stage), class: 'btn action-edit'
+            =link_to 'Destroy', stage, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn action-delete'
+
+
+  = link_to 'New Stage', new_stage_path, class: 'btn action-new'

@@ -1,0 +1,18 @@
+.grow-1
+  %p#notice= notice
+
+  .field
+    .label Item:
+    = link_to @prop.item.name, @prop.item, class: 'link'
+  .field
+    .label Slotted:
+    = link_to @prop.slotted.name, @prop.slotted, class: 'link'
+  .field
+    .label Name:
+    = @prop.name
+  .field
+    .label Slots:
+    = @prop.slots
+
+  = link_to 'Edit', edit_prop_path(@prop), class: 'btn action-edit'
+  = link_to 'Back', props_path, class: 'btn action-cancel'

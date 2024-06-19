@@ -1,13 +1,68 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/*
+@tailwind typeography;
 
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  h1 {
+    @apply block text-2xl font-bold;
   }
+
+  h2 {
+    @apply block text-xl font-bold;
+  }
+
+  h3 {
+    @apply block text-xl;
+  }
+
+  .link {
+    @apply text-sky-700 hover:text-sky-900 no-underline hover:underline;
+  }
+
+  .btn {
+    @apply inline-block font-medium rounded-lg text-sm text-center w-full md:w-auto px-5 py-2.5;
+  }
+
+  .btn-round {
+    @apply appearance-none self-center object-center align-middle relative outline-0 outline-offset-0 border-0 inline-block font-medium lg:text-xl w-8 h-8 lg:w-10 lg:h-10 rounded-full text-center pt-1 lg:pt-1.5 m-0;
+  }
+
+  .action-new {
+    @apply text-white bg-green-700 hover:bg-green-900 focus:ring-4 focus:ring-green-300;
+  }
+
+  .action-edit {
+    @apply text-white bg-cyan-700 hover:bg-cyan-900 focus:ring-4 focus:ring-cyan-300;
+  }
+
+  .action-delete {
+    @apply text-white bg-red-700 hover:bg-red-900 focus:ring-4 focus:ring-red-300;
+  }
+
+  .action-show {
+    @apply text-white bg-green-700 hover:bg-green-900 focus:ring-4 focus:ring-green-300;
+  }
+
+  .action-confirm {
+    @apply text-white bg-gray-700 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300;
+  }
+
+  .action-cancel {
+    @apply text-black bg-gray-100 hover:bg-gray-300 focus:ring-4 focus:ring-gray-600;
+  }
+
+  .field {
+    @apply py-3
+  }
+
+  .label {
+    @apply block mb-1 text-sm font-medium text-gray-900 capitalize;
+  }
+
+  .input {
+    @apply block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-sky-500 focus:border-sky-500;
+  }
+
 }
 
-*/

@@ -10,5 +10,12 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   %body
-    %main.container.mx-auto.mt-28.px-5.flex
+    %header.container.mx-auto
+      = link_to 'Stages', stages_path, class: 'link'
+      = link_to 'Passages', passages_path, class: 'link'
+      = link_to 'Creatures', creatures_path, class: 'link'
+      = link_to 'Items', items_path, class: 'link'
+      = link_to 'Actors', actors_path, class: 'link'
+      = link_to 'Props', props_path, class: 'link'
+    %main.container.mx-auto.mt-8.flex
       = yield

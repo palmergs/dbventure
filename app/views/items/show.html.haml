@@ -1,0 +1,19 @@
+.grow-1
+  %p#notice= notice
+
+  .field
+    .label Name:
+    = @item.name
+  .field
+    .label Description:
+    = @item.description
+  .field
+    .label Instances
+    - if @item.props.present?
+      - @item.props.each do |prop|
+        = link_to prop.name, prop, class: 'link'
+    - else
+      No instances of this item
+
+  = link_to 'Edit', edit_item_path(@item), class: 'btn action-edit'
+  = link_to 'Back', items_path, class: 'btn action-cancel'

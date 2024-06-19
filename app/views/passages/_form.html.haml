@@ -1,0 +1,22 @@
+= form_for @passage do |f|
+  - if @passage.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@passage.errors.count, "error")} prohibited this passage from being saved:"
+      %ul
+        - @passage.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :from, class: 'label'
+    = f.collection_select :from_id, Stage.order(:name), :id, :name
+  .field
+    = f.label :to, class: 'label'
+    = f.collection_select :to_id, Stage.order(:name), :id, :name
+  .field
+    = f.label :name, class: 'label'
+    = f.text_field :name, class: 'input'
+  .field
+    = f.label :direction, class: 'label'
+    = f.text_field :direction, class: 'input'
+  .actions
+    = f.submit 'Save', class: 'btn action-confirm'

@@ -1,0 +1,22 @@
+.grow-1
+  %p#notice= notice
+
+  .field
+    .label Stage:
+    = link_to @actor.stage.name, @actor.stage, class: 'link'
+  .field
+    .label Creature:
+    = link_to @actor.creature.name, @actor.creature, class: 'link'
+  .field
+    .label Name:
+    = @actor.name
+  .field
+    .label Items
+    - if @actor.props.present?
+      - @actor.props.each do |prop|
+        = link_to prop.name, prop, class: 'link'
+    - else
+      Not carrying anything visible
+
+  = link_to 'Edit', edit_actor_path(@actor), class: 'btn action-edit'
+  = link_to 'Back', actors_path, class: 'btn action-cancel'

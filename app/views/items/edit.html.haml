@@ -1,0 +1,7 @@
+.grow-1
+  %h1 Editing item
+
+  = render 'form'
+
+  = link_to 'Show', @item, class: 'btn action-show'
+  = link_to 'Back', items_path, class: 'btn action-cancel'

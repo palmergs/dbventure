@@ -1,0 +1,19 @@
+.grow-1
+  %p#notice= notice
+
+  .field
+    .label Name:
+    = @creature.name
+  .field
+    .label Description:
+    = @creature.description
+  .field
+    .label Actors
+    - if @creature.actors.present?
+      - @creature.actors.each do |actor|
+        = link_to actor.name, actor, class: 'link'
+    - else
+      There are no instance of this creature
+
+  = link_to 'Edit', edit_creature_path(@creature), class: 'btn action-edit'
+  = link_to 'Back', creatures_path, class: 'btn action-cancel'
