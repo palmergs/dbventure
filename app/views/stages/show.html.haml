@@ -3,29 +3,40 @@
 
   .field
     .label Name:
-    = @stage.name
+    %h2= @stage.name
   .field
     .label Description:
     = @stage.description
   .field
     .label Actors
     - if @stage.actors.present?
-      - @stage.actors.each do |actor|
-        = link_to actor.name, actor, class: 'link'
+      %ul
+        - @stage.actors.each do |actor|
+          %li
+            = link_to actor.name, actor, class: 'link'
+            (
+            = link_to actor.creature.name, actor.creature, class: 'link'
+            )
     - else
       %p No one is here but you
   .field
     .label Props
     - if @stage.props.present?
-      - @stage.props.each do |prop|
-        = link_to prop.name, prop, class: 'link'
+      %ul
+        - @stage.props.each do |prop|
+          %li= link_to prop.name, prop, class: 'link'
     - else
       %p No items are visible in this area
   .field
     .label Passages
     - if @stage.passages_out.present?
-      - @stage.passages_out.each do |passage|
-        = link_to "#{ passage.name } (#{ passage.direction })", passage, class: 'link'
+      %ul
+        - @stage.passages_out.each do |passage|
+          %li
+            = link_to passage.name, passage, class: 'link'
+            (
+            = link_to passage.direction, passage.to, class: "link"
+            )
     - else
       %p No visible passages go out from this area
 
