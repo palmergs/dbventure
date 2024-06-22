@@ -16,6 +16,10 @@
     @apply block text-xl;
   }
 
+  h4 {
+    @apply block text-lg font-bold;
+  }
+
   .link {
     @apply text-sky-700 hover:text-sky-900 no-underline hover:underline;
   }

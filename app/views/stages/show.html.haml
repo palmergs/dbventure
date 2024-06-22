@@ -7,7 +7,7 @@
       = turbo_frame_tag "display-stage", src: game_stage_path(@stage) do
         %p Game is not loading...
     .grow-0
-      %h3 Description
+      %h4 Description
       = turbo_frame_tag "display-info" 
 
   = link_to 'Edit', edit_stage_path(@stage), class: 'btn action-edit'
