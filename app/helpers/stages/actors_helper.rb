@@ -1,0 +1,2 @@
+module Stages::ActorsHelper
+end

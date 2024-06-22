@@ -1,0 +1,2 @@
+module Stages::PropsHelper
+end

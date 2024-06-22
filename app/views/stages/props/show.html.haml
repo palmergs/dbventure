@@ -1,0 +1,12 @@
+This is a prop!
+= turbo_frame_tag "display-info" do
+  %h3
+    = @prop.name
+    (
+    = @prop.item.name
+    )
+  %p
+    - if @prop.description.present?
+      = @prop.description
+    - else
+      = @prop.item.description
