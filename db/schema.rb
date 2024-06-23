@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_08_183050) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_23_025355) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,8 +21,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_08_183050) do
     t.text "description", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["creature_id"], name: "index_actors_on_creature_id"
     t.index ["stage_id"], name: "index_actors_on_stage_id"
+    t.index ["user_id"], name: "index_actors_on_user_id"
   end
 
   create_table "creatures", force: :cascade do |t|
@@ -70,6 +72,25 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_08_183050) do
     t.text "description", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.bigint "character_id"
+    t.index ["character_id"], name: "index_users_on_character_id", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "actors", "creatures"

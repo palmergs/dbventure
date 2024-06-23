@@ -1,21 +1,17 @@
 class PropsController < ApplicationController
   before_action :set_prop, only: %i[ show edit update destroy ]
 
-  # GET /props
   def index
     @props = Prop.all
   end
 
-  # GET /props/1
   def show
   end
 
-  # GET /props/new
   def new
     @prop = Prop.new
   end
 
-  # GET /props/1/edit
   def edit
   end
 

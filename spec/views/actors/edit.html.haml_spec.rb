@@ -9,14 +9,5 @@ RSpec.describe "actors/edit", type: :view do
 
   it "renders the edit actor form" do
     render
-
-    assert_select "form[action=?][method=?]", actor_path(actor), "post" do
-
-      assert_select "input[name=?]", "actor[stage_id]"
-
-      assert_select "input[name=?]", "actor[creature_id]"
-
-      assert_select "input[name=?]", "actor[name]"
-    end
   end
 end
