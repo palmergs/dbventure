@@ -15,5 +15,4 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :character_id, uniqueness: { allow_nil: true }
-
 end

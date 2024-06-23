@@ -3,6 +3,6 @@ FactoryBot.define do
     item { create(:item) }
     slotted { create(:actor) }
     name { Faker::Name.name }
-    slots { ["test", "test"] }
+    slots { %w[test test] }
   end
 end

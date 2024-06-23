@@ -1,5 +1,5 @@
 class PassagesController < ApplicationController
-  before_action :set_passage, only: %i[ show edit update destroy ]
+  before_action :set_passage, only: %i[show edit update destroy]
 
   # GET /passages
   def index
@@ -7,8 +7,7 @@ class PassagesController < ApplicationController
   end
 
   # GET /passages/1
-  def show
-  end
+  def show; end
 
   # GET /passages/new
   def new
@@ -16,15 +15,14 @@ class PassagesController < ApplicationController
   end
 
   # GET /passages/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /passages
   def create
     @passage = Passage.new(passage_params)
 
     if @passage.save
-      redirect_to @passage, notice: "Passage was successfully created."
+      redirect_to @passage, notice: 'Passage was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,7 +31,7 @@ class PassagesController < ApplicationController
   # PATCH/PUT /passages/1
   def update
     if @passage.update(passage_params)
-      redirect_to @passage, notice: "Passage was successfully updated.", status: :see_other
+      redirect_to @passage, notice: 'Passage was successfully updated.', status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -42,17 +40,18 @@ class PassagesController < ApplicationController
   # DELETE /passages/1
   def destroy
     @passage.destroy!
-    redirect_to passages_url, notice: "Passage was successfully destroyed.", status: :see_other
+    redirect_to passages_url, notice: 'Passage was successfully destroyed.', status: :see_other
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_passage
-      @passage = Passage.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def passage_params
-      params.require(:passage).permit(:from_id, :to_id, :name, :direction)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_passage
+    @passage = Passage.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def passage_params
+    params.require(:passage).permit(:from_id, :to_id, :name, :direction)
+  end
 end

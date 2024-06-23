@@ -10,6 +10,6 @@ class CreateProps < ActiveRecord::Migration[7.1]
       t.timestamps
     end
 
-    add_index :props, [:slotted_id, :slotted_type]
+    add_index :props, %i[slotted_id slotted_type]
   end
 end

@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe "actors/edit", type: :view do
+RSpec.describe 'actors/edit', type: :view do
   let(:actor) { create(:actor) }
 
   before(:each) do
     assign(:actor, actor)
   end
 
-  it "renders the edit actor form" do
+  it 'renders the edit actor form' do
     render
   end
 end

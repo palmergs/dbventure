@@ -33,10 +33,9 @@ RSpec.describe User, type: :model do
       expect(user.character).to be_nil
       expect(user2.character).to eq(actor)
 
-      expect {
+      expect do
         user.update!(character: actor)
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      end.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
-
 end
