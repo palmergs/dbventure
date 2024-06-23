@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PropsController < ApplicationController
   before_action :set_prop, only: %i[show edit update destroy]
 
@@ -18,7 +20,7 @@ class PropsController < ApplicationController
     @prop = Prop.new(prop_params)
 
     if @prop.save
-      redirect_to @prop, notice: 'Prop was successfully created.'
+      redirect_to @prop, notice: "Prop was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +29,7 @@ class PropsController < ApplicationController
   # PATCH/PUT /props/1
   def update
     if @prop.update(prop_params)
-      redirect_to @prop, notice: 'Prop was successfully updated.', status: :see_other
+      redirect_to @prop, notice: "Prop was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +38,7 @@ class PropsController < ApplicationController
   # DELETE /props/1
   def destroy
     @prop.destroy!
-    redirect_to props_url, notice: 'Prop was successfully destroyed.', status: :see_other
+    redirect_to props_url, notice: "Prop was successfully destroyed.", status: :see_other
   end
 
   private

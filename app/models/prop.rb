@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Prop < ApplicationRecord
   belongs_to :item
   belongs_to :slotted, polymorphic: true

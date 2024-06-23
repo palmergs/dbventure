@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StagesController < ApplicationController
   before_action :set_stage, only: %i[show edit update destroy]
 
@@ -22,7 +24,7 @@ class StagesController < ApplicationController
     @stage = Stage.new(stage_params)
 
     if @stage.save
-      redirect_to @stage, notice: 'Stage was successfully created.'
+      redirect_to @stage, notice: "Stage was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,7 +33,7 @@ class StagesController < ApplicationController
   # PATCH/PUT /stages/1
   def update
     if @stage.update(stage_params)
-      redirect_to @stage, notice: 'Stage was successfully updated.', status: :see_other
+      redirect_to @stage, notice: "Stage was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -40,7 +42,7 @@ class StagesController < ApplicationController
   # DELETE /stages/1
   def destroy
     @stage.destroy!
-    redirect_to stages_url, notice: 'Stage was successfully destroyed.', status: :see_other
+    redirect_to stages_url, notice: "Stage was successfully destroyed.", status: :see_other
   end
 
   private

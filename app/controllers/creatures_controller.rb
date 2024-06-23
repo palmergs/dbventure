@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreaturesController < ApplicationController
   before_action :set_creature, only: %i[show edit update destroy]
 
@@ -22,7 +24,7 @@ class CreaturesController < ApplicationController
     @creature = Creature.new(creature_params)
 
     if @creature.save
-      redirect_to @creature, notice: 'Creature was successfully created.'
+      redirect_to @creature, notice: "Creature was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,7 +33,7 @@ class CreaturesController < ApplicationController
   # PATCH/PUT /creatures/1
   def update
     if @creature.update(creature_params)
-      redirect_to @creature, notice: 'Creature was successfully updated.', status: :see_other
+      redirect_to @creature, notice: "Creature was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -40,7 +42,7 @@ class CreaturesController < ApplicationController
   # DELETE /creatures/1
   def destroy
     @creature.destroy!
-    redirect_to creatures_url, notice: 'Creature was successfully destroyed.', status: :see_other
+    redirect_to creatures_url, notice: "Creature was successfully destroyed.", status: :see_other
   end
 
   private

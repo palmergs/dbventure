@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddUserToActor < ActiveRecord::Migration[7.1]
   def change
     add_reference :actors, :user, null: true
