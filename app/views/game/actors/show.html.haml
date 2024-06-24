@@ -1,0 +1,17 @@
+= turbo_frame_tag "display-info" do
+  %h4
+    = @actor.name
+    (
+    = @actor.creature.name
+    )
+  %p
+    - if @actor.description.present?
+      = @actor.description
+    - else
+      = @actor.creature.description
+  - if @actor.props.present?
+    %p Inventory
+    %ul
+      - @actor.props.each do |prop|
+        %li= link_to prop.name, game_prop_path(@stage, prop), data: { turbo_frame: "display-info" }, class: "link"
+

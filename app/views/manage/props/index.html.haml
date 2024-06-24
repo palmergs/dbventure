@@ -1,0 +1,35 @@
+.grow-1
+  %h1 Listing props
+
+  %table
+    %thead
+      %tr
+        %th Item
+        %th Slotted
+        %th Name
+        %th Slots
+        %th
+
+    %tbody
+      - @props.each do |prop|
+        %tr
+          %td= link_to prop.item.name, manage_item_path(prop.item), class: 'link'
+          %td
+            - if prop.slotted.is_a?(Actor)
+              = link_to prop.slotted.name, manage_actor_path(prop.slotted), class: 'link'
+            - if prop.slotted.is_a?(Prop)
+              = link_to prop.slotted.name, manage_prop_path(prop.slotted), class: 'link'
+            - if prop.slotted.is_a?(Stage)
+              = link_to prop.slotted.name, manage_stage_path(prop.slotted), class: 'link'
+          %td= prop.name
+          %td= prop.slots
+          %td
+            = link_to 'Show', manage_prop_path(prop), class: 'btn action-show'
+            = link_to 'Edit', edit_manage_prop_path(prop), class: 'btn action-edit'
+            = link_to 'Destroy',
+                      manage_prop_path(prop),
+                      method: :delete,
+                      data: { turbo_method: :delete, confirm: 'Are you sure?' },
+                      class: 'btn action-delete'
+
+  = link_to 'New Prop', new_manage_prop_path, class: 'btn action-new'

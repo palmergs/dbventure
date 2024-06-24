@@ -1,0 +1,25 @@
+.grow-1
+  %h1 Listing passages
+
+  %table
+    %thead
+      %tr
+        %th From
+        %th To
+        %th Name
+        %th Direction
+        %th
+
+    %tbody
+      - @passages.each do |passage|
+        %tr
+          %td= link_to passage.from.name, manage_stage_path(passage.from), class: 'link'
+          %td= link_to passage.to.name, manage_stage_path(passage.to), class: 'link'
+          %td= passage.name
+          %td= passage.direction
+          %td
+            = link_to 'Show', manage_passage_path(passage), class: 'btn action-show'
+            = link_to 'Edit', edit_manage_passage_path(passage), class: 'btn action-edit'
+            = link_to 'Destroy', manage_passage_path(passage), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn action-delete'
+
+  = link_to 'New Passage', new_manage_passage_path, class: 'btn action-new'

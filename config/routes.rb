@@ -2,19 +2,24 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: %i[show index]
-  resources :passages
-  resources :props
-  resources :actors
-  resources :items
-  resources :creatures
-  resources :stages do
-    member do
-      get :game, to: "stages/game#index"
-    end
-    resources :props, only: %i[index show], controller: "stages/props"
-    resources :passages, only: %i[index show], controller: "stages/passages"
-    resources :actors, only: %i[index show], controller: "stages/actors"
+
+  namespace :manage do
+    resources :passages
+    resources :props
+    resources :actors
+    resources :items
+    resources :creatures
+    resources :stages
+  end
+
+  resource :profile, only: %i[show update]
+  resources :character, except: %i[destroy]
+  resource :game, only: %i[show update] do
+    resources :props, only: %i[index show], controller: "game/props"
+    resources :passages, only: %i[index show], controller: "game/passages"
+    resources :actors, only: %i[index show], controller: "game/actors"
+    resources :creatures, only: %i[index show], controller: "game/creatures"
+    resources :items, only: %i[index show], controller: "game/items"
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -22,5 +27,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "stages#index"
+  root "home#index"
 end

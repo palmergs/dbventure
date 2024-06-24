@@ -11,11 +11,11 @@
     = javascript_importmap_tags
   %body
     %header.container.mx-auto
-      = link_to 'Stages', stages_path, class: 'link'
-      = link_to 'Passages', passages_path, class: 'link'
-      = link_to 'Creatures', creatures_path, class: 'link'
-      = link_to 'Items', items_path, class: 'link'
-      = link_to 'Actors', actors_path, class: 'link'
-      = link_to 'Props', props_path, class: 'link'
+      = link_to 'Stages', manage_stages_path, class: 'link'
+      = link_to 'Passages', manage_passages_path, class: 'link'
+      = link_to 'Creatures', manage_creatures_path, class: 'link'
+      = link_to 'Items', manage_items_path, class: 'link'
+      = link_to 'Actors', manage_actors_path, class: 'link'
+      = link_to 'Props', manage_props_path, class: 'link'
     %main.container.mx-auto.mt-8.flex
       = yield

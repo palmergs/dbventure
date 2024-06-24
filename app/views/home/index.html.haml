@@ -1,4 +1,7 @@
 .grow-1
-  %h1 Home#index
-  %p Find me in app/views/home/index.html.haml
+  %h1 Home
   %p= "#{ @page_hits } page views"
+
+  %h1 Actions
+  = link_to "Play the Game", game_path
+  = link_to "View your Profile", profile_path

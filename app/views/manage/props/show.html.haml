@@ -1,0 +1,23 @@
+.grow-1
+  %p#notice= notice
+
+  .field
+    .label Item:
+    = link_to @prop.item.name, manage_item_path(@prop.item), class: 'link'
+  .field
+    .label Carried:
+    - if @prop.slotted.is_a?(Actor)
+      = link_to @prop.slotted.name, manage_actor_path(@prop.slotted), class: 'link'
+    - if @prop.slotted.is_a?(Prop)
+      = link_to @prop.slotted.name, manage_prop_path(@prop.slotted), class: 'link'
+    - if @prop.slotted.is_a?(Stage)
+      = link_to @prop.slotted.name, manage_stage_path(@prop.slotted), class: 'link'
+  .field
+    .label Name:
+    = @prop.name
+  .field
+    .label Slots:
+    = @prop.slots
+
+  = link_to 'Edit', edit_manage_prop_path(@prop), class: 'btn action-edit'
+  = link_to 'Back', manage_props_path, class: 'btn action-cancel'

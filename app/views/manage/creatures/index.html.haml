@@ -1,0 +1,21 @@
+.grow-1
+  %h1 Listing creatures
+
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Description
+        %th
+
+    %tbody
+      - @creatures.each do |creature|
+        %tr
+          %td= creature.name
+          %td= creature.description
+          %td
+            = link_to 'Show', manage_creature_path(creature), class: 'btn action-show'
+            = link_to 'Edit', edit_manage_creature_path(creature), class: 'btn action-edit'
+            = link_to 'Destroy', manage_creature_path(creature), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn action-delete'
+
+  = link_to 'New Creature', new_manage_creature_path, class: 'btn action-new'

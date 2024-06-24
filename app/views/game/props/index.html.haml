@@ -1,0 +1,8 @@
+= turbo_frame_tag dom_id(@stage, "props") do
+  - if @props.present?
+    %ul
+      - @props.each do |prop|
+        %li
+          = link_to prop.name, game_prop_path(@stage, prop), data: { turbo_frame: "display-info" }, class: 'link'
+  - else
+    %p There are no items here
