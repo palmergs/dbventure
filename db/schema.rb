@@ -10,9 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_23_025355) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_25_011331) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "command_enum", ["attack", "apply", "build", "cast", "clean", "climb", "close", "drink", "drop", "eat", "engrave", "examine", "get", "insult", "leave", "look", "mix", "move", "offer", "open", "pickup", "praise", "pray", "quit", "read", "remove", "rest", "rub", "run", "say", "speak", "shoot", "sip", "sit", "sleep", "store", "swing", "target", "taste", "taunt", "throw", "topple", "use", "wait", "walk", "wear", "wield", "yell", "zzz"]
+  create_enum "outcome_enum", ["attacked", "killed", "crafted", "discovered", "destroyed"]
 
   create_table "actors", force: :cascade do |t|
     t.bigint "stage_id", null: false
@@ -25,6 +30,33 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_23_025355) do
     t.index ["creature_id"], name: "index_actors_on_creature_id"
     t.index ["stage_id"], name: "index_actors_on_stage_id"
     t.index ["user_id"], name: "index_actors_on_user_id"
+  end
+
+  create_table "commands", force: :cascade do |t|
+    t.bigint "stage_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "actor_id", null: false
+    t.enum "command", null: false, enum_type: "command_enum"
+    t.string "direct_type"
+    t.bigint "direct_id"
+    t.string "indirect_type"
+    t.bigint "indirect_id"
+    t.bigint "component_ids", default: [], null: false, array: true
+    t.integer "count", default: 0, null: false
+    t.string "comment"
+    t.string "slots", default: [], null: false, array: true
+    t.enum "outcome", null: false, enum_type: "outcome_enum"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actor_id"], name: "index_commands_on_actor_id"
+    t.index ["command"], name: "index_commands_on_command"
+    t.index ["direct_id", "direct_type"], name: "index_commands_on_direct_id_and_direct_type"
+    t.index ["direct_type", "direct_id"], name: "index_commands_on_direct"
+    t.index ["indirect_id", "indirect_type"], name: "index_commands_on_indirect_id_and_indirect_type"
+    t.index ["indirect_type", "indirect_id"], name: "index_commands_on_indirect"
+    t.index ["outcome"], name: "index_commands_on_outcome"
+    t.index ["stage_id"], name: "index_commands_on_stage_id"
+    t.index ["user_id"], name: "index_commands_on_user_id"
   end
 
   create_table "creatures", force: :cascade do |t|
@@ -95,6 +127,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_23_025355) do
 
   add_foreign_key "actors", "creatures"
   add_foreign_key "actors", "stages"
+  add_foreign_key "commands", "actors"
+  add_foreign_key "commands", "stages"
+  add_foreign_key "commands", "users"
   add_foreign_key "passages", "stages", column: "from_id"
   add_foreign_key "passages", "stages", column: "to_id"
   add_foreign_key "props", "items"

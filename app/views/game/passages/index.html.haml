@@ -3,9 +3,16 @@
     %ul
       - @passages.each do |passage|
         %li
-          = link_to passage.name, game_passage_path(@stage, passage), data: { turbo_frame: "display-info" }, class: 'link'
+          = link_to passage.name,
+                    game_passage_path(@stage, passage),
+                    data: { turbo_frame: "display-info" },
+                    class: 'link'
           (
-          = link_to passage.direction, game_path, data: { turbo_frame: "display-stage" }, class: "link"
+          = link_to passage.direction,
+                    game_path(command: :move, direct_id: passage, direct_type: 'Passage'),
+                    method: :patch,
+                    data: { turbo_method: :patch, turbo_frame: "display-stage" },
+                    class: "link"
           )
   - else
     %p No visible passages go out from this area
