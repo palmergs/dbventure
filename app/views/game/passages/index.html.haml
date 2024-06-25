@@ -4,7 +4,7 @@
       - @passages.each do |passage|
         %li
           = link_to passage.name,
-                    game_passage_path(@stage, passage),
+                    game_passage_path(passage),
                     data: { turbo_frame: "display-info" },
                     class: 'link'
           (
