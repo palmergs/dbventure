@@ -1,4 +1,4 @@
-= form_for @creature do |f|
+= form_for [:manage, @creature] do |f|
   - if @creature.errors.any?
     #error_explanation
       %h2= "#{pluralize(@creature.errors.count, "error")} prohibited this creature from being saved:"

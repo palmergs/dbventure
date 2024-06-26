@@ -3,5 +3,5 @@
 
   = render 'form'
 
-  = link_to 'Show', @prop, class: 'btn action-show'
-  = link_to 'Back', props_path, class: 'btn action-cancel'
+  = link_to 'Show', [:manage, @prop], class: 'btn action-show'
+  = link_to 'Back', manage_props_path, class: 'btn action-cancel'

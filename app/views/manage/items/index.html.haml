@@ -14,8 +14,13 @@
           %td= item.name
           %td= item.description
           %td
-            = link_to 'Show', item, class: 'btn action-show'
-            = link_to 'Edit', edit_item_path(item), class: 'btn action-edit'
-            = link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn action-delete'
+            = link_to 'Show', manage_item_path(item), class: 'btn action-show'
+            = link_to 'Edit', edit_manage_item_path(item), class: 'btn action-edit'
+            - unless item.props.present?
+              = link_to 'Destroy',
+                        manage_item_path(item),
+                        method: :delete,
+                        data: { turbo_method: :delete, confirm: 'Are you sure?' },
+                        class: 'btn action-delete'
 
-  = link_to 'New Item', new_item_path, class: 'btn action-new'
+  = link_to 'New Item', new_manage_item_path, class: 'btn action-new'

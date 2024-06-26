@@ -17,9 +17,13 @@
           %td= stage.name
           %td= stage.description
           %td
-            =link_to 'Show', stage, class: 'btn action-show'
-            =link_to 'Edit', edit_stage_path(stage), class: 'btn action-edit'
-            =link_to 'Destroy', stage, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn action-delete'
+            =link_to 'Show', manage_stage_path(stage), class: 'btn action-show'
+            =link_to 'Edit', edit_manage_stage_path(stage), class: 'btn action-edit'
+            =link_to 'Destroy',
+                     manage_stage_path(stage),
+                     method: :delete,
+                     data: { turbo_method: :delete, confirm: 'Are you sure?' },
+                     class: 'btn action-delete'
 
 
-  = link_to 'New Stage', new_stage_path, class: 'btn action-new'
+  = link_to 'New Stage', new_manage_stage_path, class: 'btn action-new'

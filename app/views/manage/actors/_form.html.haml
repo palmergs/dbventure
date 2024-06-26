@@ -1,4 +1,4 @@
-= form_for @actor do |f|
+= form_for [:manage, @actor] do |f|
   - if @actor.errors.any?
     #error_explanation
       %h2= "#{pluralize(@actor.errors.count, "error")} prohibited this actor from being saved:"

@@ -1,0 +1,15 @@
+.flex-1
+  %h1 Character
+  .field
+    .label Name
+    = @character.name
+  .field
+    .label Description
+    = @character.description
+  .field
+    .label Creature
+    = @character.creature.name
+
+  = link_to 'Activate', update_character_path(@character, { activate: true }), method: :patch, data: { turbo_method: :patch }, class: 'link'
+  = link_to 'Edit', edit_character_path(@character), class: 'btn action-edit'
+  = link_to 'Back', characters_path, class: 'btn action-cancel'

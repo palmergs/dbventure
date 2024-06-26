@@ -1,4 +1,4 @@
-= form_for @stage do |f|
+= form_for [:manage, @stage] do |f|
   - if @stage.errors.any?
     #error_explanation
       %h2= "#{pluralize(@stage.errors.count, "error")} prohibited this stage from being saved:"

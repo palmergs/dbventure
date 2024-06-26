@@ -1,4 +1,4 @@
-= form_for @passage do |f|
+= form_for [:manage, @passage] do |f|
   - if @passage.errors.any?
     #error_explanation
       %h2= "#{pluralize(@passage.errors.count, "error")} prohibited this passage from being saved:"

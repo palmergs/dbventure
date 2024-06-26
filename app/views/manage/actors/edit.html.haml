@@ -3,5 +3,5 @@
 
   = render 'form'
 
-  = link_to 'Show', @actor, class: 'btn action-show'
-  = link_to 'Back', actors_path, class: 'btn btn-cancel'
+  = link_to 'Show', [:manage, @actor], class: 'btn action-show'
+  = link_to 'Back', manage_actors_path, class: 'btn btn-cancel'
