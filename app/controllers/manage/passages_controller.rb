@@ -20,7 +20,7 @@ class Manage::PassagesController < ApplicationController
     @passage = Passage.new(passage_params)
 
     if @passage.save
-      redirect_to @passage, notice: "Passage was successfully created."
+      redirect_to [:manage, @passage], notice: "Passage was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class Manage::PassagesController < ApplicationController
 
   def update
     if @passage.update(passage_params)
-      redirect_to @passage, notice: "Passage was successfully updated.", status: :see_other
+      redirect_to [:manage, @passage], notice: "Passage was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class Manage::PassagesController < ApplicationController
   # DELETE /passages/1
   def destroy
     @passage.destroy!
-    redirect_to passages_url, notice: "Passage was successfully destroyed.", status: :see_other
+    redirect_to manage_passages_url, notice: "Passage was successfully destroyed.", status: :see_other
   end
 
   private

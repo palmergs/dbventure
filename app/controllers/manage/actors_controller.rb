@@ -20,7 +20,7 @@ class Manage::ActorsController < ApplicationController
     @actor = Actor.new(actor_params)
 
     if @actor.save
-      redirect_to @actor, notice: "Actor was successfully created."
+      redirect_to [:manage, @actor], notice: "Actor was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class Manage::ActorsController < ApplicationController
 
   def update
     if @actor.update(actor_params)
-      redirect_to @actor, notice: "Actor was successfully updated.", status: :see_other
+      redirect_to [:manage, @actor], notice: "Actor was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class Manage::ActorsController < ApplicationController
 
   def destroy
     @actor.destroy!
-    redirect_to actors_url, notice: "Actor was successfully destroyed.", status: :see_other
+    redirect_to manage_actors_url, notice: "Actor was successfully destroyed.", status: :see_other
   end
 
   private

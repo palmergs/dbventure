@@ -1,12 +1,12 @@
-class CharactersController < ApplicationController
+class ActorsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @actors = current_user.actors
+    @characters = current_user.actors
   end
 
   def show
-    @actor = current_user.actors.find(params[:id])
+    @character = current_user.actors.find(params[:id])
   end
 
   def new
@@ -16,8 +16,9 @@ class CharactersController < ApplicationController
   def create
     @character = Actor.new(create_params)
     @character.user = current_user
+    @character.stage = current_user.lobby
     if @character.save
-      redirect_to character_path(@character)
+      redirect_to @character
     else
       render :new
     end
@@ -33,7 +34,7 @@ class CharactersController < ApplicationController
       if update_params[:activate]
         current_user.update(character: @character)
       end
-      redirect_to character_path(@character)
+      redirect_to @character
     else
       render :edit
     end

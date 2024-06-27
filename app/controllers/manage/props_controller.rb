@@ -20,7 +20,7 @@ class Manage::PropsController < ApplicationController
     @prop = Prop.new(prop_params)
 
     if @prop.save
-      redirect_to @prop, notice: "Prop was successfully created."
+      redirect_to [:manage, @prop], notice: "Prop was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class Manage::PropsController < ApplicationController
 
   def update
     if @prop.update(prop_params)
-      redirect_to @prop, notice: "Prop was successfully updated.", status: :see_other
+      redirect_to [:manage, @prop], notice: "Prop was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class Manage::PropsController < ApplicationController
 
   def destroy
     @prop.destroy!
-    redirect_to props_url, notice: "Prop was successfully destroyed.", status: :see_other
+    redirect_to manage_props_url, notice: "Prop was successfully destroyed.", status: :see_other
   end
 
   private
@@ -48,6 +48,6 @@ class Manage::PropsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def prop_params
-    params.require(:prop).permit(:item_id, :slotted_id, :slotted_type, :name, :slots)
+    params.require(:prop).permit(:item_id, :slotted_id, :slotted_type, :name, :description, :slots_str)
   end
 end

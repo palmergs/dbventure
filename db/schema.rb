@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_25_011331) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_27_011433) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
-  create_enum "command_enum", ["attack", "apply", "build", "cast", "clean", "climb", "close", "drink", "drop", "eat", "engrave", "examine", "get", "insult", "leave", "look", "mix", "move", "offer", "open", "pickup", "praise", "pray", "quit", "read", "remove", "rest", "rub", "run", "say", "speak", "shoot", "sip", "sit", "sleep", "store", "swing", "target", "taste", "taunt", "throw", "topple", "use", "wait", "walk", "wear", "wield", "yell", "zzz"]
-  create_enum "outcome_enum", ["attacked", "killed", "crafted", "discovered", "destroyed"]
+  create_enum "action_type", ["attack", "apply", "build", "cast", "clean", "drink", "drop", "eat", "engrave", "examine", "get", "look", "move", "pickup", "pray", "read", "remove", "rub", "say", "shoot", "sit", "store", "swing", "throw", "use", "wait", "wear", "wield", "zzz"]
 
   create_table "actors", force: :cascade do |t|
     t.bigint "stage_id", null: false
@@ -36,25 +35,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_011331) do
     t.bigint "stage_id", null: false
     t.bigint "user_id", null: false
     t.bigint "actor_id", null: false
-    t.enum "command", null: false, enum_type: "command_enum"
+    t.enum "action", null: false, enum_type: "action_type"
     t.string "direct_type"
     t.bigint "direct_id"
     t.string "indirect_type"
     t.bigint "indirect_id"
-    t.bigint "component_ids", default: [], null: false, array: true
     t.integer "count", default: 0, null: false
     t.string "comment"
     t.string "slots", default: [], null: false, array: true
-    t.enum "outcome", null: false, enum_type: "outcome_enum"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["action"], name: "index_commands_on_action"
     t.index ["actor_id"], name: "index_commands_on_actor_id"
-    t.index ["command"], name: "index_commands_on_command"
     t.index ["direct_id", "direct_type"], name: "index_commands_on_direct_id_and_direct_type"
     t.index ["direct_type", "direct_id"], name: "index_commands_on_direct"
     t.index ["indirect_id", "indirect_type"], name: "index_commands_on_indirect_id_and_indirect_type"
     t.index ["indirect_type", "indirect_id"], name: "index_commands_on_indirect"
-    t.index ["outcome"], name: "index_commands_on_outcome"
     t.index ["stage_id"], name: "index_commands_on_stage_id"
     t.index ["user_id"], name: "index_commands_on_user_id"
   end
@@ -104,6 +100,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_011331) do
     t.text "description", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "start_location", default: false, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -120,6 +117,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_011331) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.bigint "character_id"
+    t.bigint "stage_id"
     t.index ["character_id"], name: "index_users_on_character_id", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

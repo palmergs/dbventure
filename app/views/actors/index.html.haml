@@ -4,7 +4,7 @@
   %h3 Current Character
   - if current_user.character
     - if current_user.character.user == current_user
-      = link_to character_path(current_user.character), class: 'link' do
+      = link_to actor_path(current_user.character), class: 'link' do
         %h4
           = current_user.character.name 
           (
@@ -21,12 +21,12 @@
     - if current_user.actors.present?
       - current_user.actors.each do |actor|
         .character-row
-          = link_to character_path(actor), class: 'link' do
+          = link_to actor_path(actor), class: 'link' do
             = actor.name 
             (
             = actor.creature.name
             )
-          = link_to "Edit", edit_character_path(actor), class: 'btn action-edit'
-    = link_to "New Character", new_character_path, class: 'btn action-new' 
+          = link_to "Edit", edit_actor_path(actor), class: 'btn action-edit'
+    = link_to "New Character", new_actor_path, class: 'btn action-new' 
 
 

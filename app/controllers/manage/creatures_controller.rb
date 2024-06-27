@@ -20,7 +20,7 @@ class Manage::CreaturesController < ApplicationController
     @creature = Creature.new(creature_params)
 
     if @creature.save
-      redirect_to @creature, notice: "Creature was successfully created."
+      redirect_to [:manage, @creature], notice: "Creature was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class Manage::CreaturesController < ApplicationController
 
   def update
     if @creature.update(creature_params)
-      redirect_to @creature, notice: "Creature was successfully updated.", status: :see_other
+      redirect_to [:manage, @creature], notice: "Creature was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class Manage::CreaturesController < ApplicationController
 
   def destroy
     @creature.destroy!
-    redirect_to creatures_url, notice: "Creature was successfully destroyed.", status: :see_other
+    redirect_to manage_creatures_url, notice: "Creature was successfully destroyed.", status: :see_other
   end
 
   private

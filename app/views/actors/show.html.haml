@@ -1,0 +1,19 @@
+.flex-1
+  %h1 Character
+  .field
+    .label Name
+    = @character.name
+  .field
+    .label Description
+    = @character.description
+  .field
+    .label Creature
+    = @character.creature.name
+
+  = link_to 'Activate',
+            profile_path({ profile: { actor_id: @character.id }}),
+            method: :patch,
+            data: { turbo_method: :patch },
+            class: 'btn action-confirm'
+  = link_to 'Edit', edit_actor_path(@character), class: 'btn action-edit'
+  = link_to 'Back', actors_path, class: 'btn action-cancel'
