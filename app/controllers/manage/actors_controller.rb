@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Manage::ActorsController < ApplicationController
+class Manage::ActorsController < ManageController
   before_action :authenticate_user!
   before_action :set_actor, only: %i[show edit update destroy]
 

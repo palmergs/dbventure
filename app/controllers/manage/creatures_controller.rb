@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Manage::CreaturesController < ApplicationController
+class Manage::CreaturesController < ManageController
   before_action :authenticate_user!
   before_action :set_creature, only: %i[show edit update destroy]
 

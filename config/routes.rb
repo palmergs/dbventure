@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  get "manage" => "manage#index"
   namespace :manage do
     resources :passages
     resources :props

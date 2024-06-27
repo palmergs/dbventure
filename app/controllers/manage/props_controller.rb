@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Manage::PropsController < ApplicationController
+class Manage::PropsController < ManageController
   before_action :authenticate_user!
   before_action :set_prop, only: %i[show edit update destroy]
 

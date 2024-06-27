@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Manage::ItemsController < ApplicationController
+class Manage::ItemsController < ManageController
   before_action :set_item, only: %i[show edit update destroy]
 
   def index

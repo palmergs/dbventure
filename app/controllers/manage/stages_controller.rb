@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Manage::StagesController < ApplicationController
+class Manage::StagesController < ManageController
   before_action :authenticate_user!
   before_action :set_stage, only: %i[show edit update destroy]
 

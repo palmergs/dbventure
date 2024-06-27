@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Manage::PassagesController < ApplicationController
+class Manage::PassagesController < ManageController
   before_action :authenticate_user!
   before_action :set_passage, only: %i[show edit update destroy]
 
