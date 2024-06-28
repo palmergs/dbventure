@@ -20,6 +20,10 @@
     @apply block text-lg font-bold;
   }
 
+  th {
+    @apply mb-1 text-sm font-medium text-gray-900 capitalize;
+  }
+
   .link {
     @apply text-sky-700 hover:text-sky-900 no-underline hover:underline;
   }
@@ -30,6 +34,10 @@
 
   .btn-round {
     @apply appearance-none self-center object-center align-middle relative outline-0 outline-offset-0 border-0 inline-block font-medium lg:text-xl w-8 h-8 lg:w-10 lg:h-10 rounded-full text-center pt-1 lg:pt-1.5 m-0;
+  }
+
+  .actions {
+    @apply w-96;
   }
 
   .action-new {

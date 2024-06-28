@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title DB Adventure
+    %title DB Adventure - Game
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
@@ -10,5 +10,6 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   %body
-    %main.w-full.flex.flex-col.sm:flex-row.flex-wrap.sm:flex-nowrap.py-4.flex-grow
-      = yield
+    %main.container.mx-auto
+      .w-full.p-4.flex.flex-col.sm:flex-row.flex-wrap.sm:flex-nowrap.py-4.rounded-lg.border-double.border-2.border-slate-500
+        = yield

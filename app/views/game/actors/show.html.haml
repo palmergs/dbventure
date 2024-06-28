@@ -13,5 +13,5 @@
     %p Inventory
     %ul
       - @actor.props.each do |prop|
-        %li= link_to prop.name, game_prop_path(@stage, prop), data: { turbo_frame: "display-info" }, class: "link"
+        %li= link_to prop.name, game_prop_path(prop), data: { turbo_frame: "display-info" }, class: "link"
 
