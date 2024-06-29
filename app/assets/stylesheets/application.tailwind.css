@@ -3,7 +3,7 @@
 @tailwind utilities;
 @tailwind typeography;
 
-@layer components {
+@layer base {
   h1 {
     @apply block text-2xl font-bold;
   }
@@ -21,9 +21,15 @@
   }
 
   th {
-    @apply mb-1 text-sm font-medium text-gray-900 capitalize;
+    @apply mb-1 text-left text-sm font-medium text-gray-900;
   }
+  
+  table {
+    @apply w-full;
+  }
+}
 
+@layer components {
   .link {
     @apply text-sky-700 hover:text-sky-900 no-underline hover:underline;
   }

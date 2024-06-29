@@ -8,6 +8,6 @@ class Game::PropsController < ApplicationController
 
   def show
     @stage = current_user.character.stage
-    @prop = @stage.props.find(params[:id])
+    @prop = Prop.find(params[:id])
   end
 end

@@ -8,6 +8,6 @@ class Game::ItemsController < ApplicationController
 
   def show
     @stage = current_user.character.stage
-    @item = @stage.items.find(params[:id])
+    @item = Item.find(params[:id])
   end
 end

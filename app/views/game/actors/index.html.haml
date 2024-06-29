@@ -5,7 +5,7 @@
         %li
           = link_to actor.name, game_actor_path(actor), data: { turbo_frame: "display-info" }, class: 'link'
           (
-          = link_to actor.creature.name, game_creature_path(actor.creature), data: { turbo_frame: "_top" }, class: 'link'
+          = link_to actor.creature.name, game_creature_path(actor.creature), data: { turbo_frame: "display-info" }, class: 'link'
           )
   - else
     %p No one is here but you
