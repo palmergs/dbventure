@@ -3,10 +3,8 @@
             game_passage_path(passage),
             data: { turbo_frame: "display-info" },
             class: 'link'
-  (
-  = link_to passage.direction,
+  = link_to "(#{ passage.direction })",
             game_path(command: :move, direct_id: passage, direct_type: 'Passage'),
             method: :patch,
             data: { turbo_method: :patch, turbo_frame: "display-stage" },
             class: "link"
-  )

@@ -75,12 +75,18 @@ class Command < ApplicationRecord
   def execute
     if self.valid?
       if move_command?
-        old_stage = self.user.character.stage
         new_stage = self.direct.to
-        if old_stage.passages_out.includes(new_stage)
-          self.user.character.update(stage: new_stage)
-          user.character.broadcast_remove_to old_stage
-          user.character.broadcast_append_to new_stage
+        if stage.passages_out.includes(new_stage)
+          actor.update(stage: new_stage)
+          actor.broadcast_remove_to stage
+          actor.broadcast_append_to stage,
+                                    partial: "notifications/notification",
+                                    target: "notifications",
+                                    locals: { message: "#{ actor.name } has left" }
+          actor.broadcast_append_to new_stage,
+                                    partial: "notifications/notification",
+                                    target: "notifications",
+                                    locals: { message: "#{ actor.name } has arrived" }
           return true
         end
       end

@@ -2,9 +2,19 @@
   %h3 Game
   = turbo_frame_tag "display-stage" do
     = render partial: 'stages/stage', locals: { stage: @stage }
-.flex-none.w-96
-  %h3 Description
-  = turbo_frame_tag "display-info"
+.flex-none.lg:w-96{class: "w-1/3"}
+  .flex.flex-col.gap-3
+    .flex-1
+      %h3 Description
+      = turbo_frame_tag "display-info"
+    .flex-1.h-96
+      %h3 Character
+      .field
+        .label Name
+        = current_user.character.name
+      .field
+        .label Creature
+        = current_user.character.creature.name
 
 
 
