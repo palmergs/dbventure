@@ -63,7 +63,29 @@ class Command < ApplicationRecord
 
   validates :command, presence: true
 
+  before_validation on: :create do
+    self.actor = self.user.character unless self.actor
+    self.stage = self.user.character.stage unless self.stage
+  end
+
   def components
     Prop.where(id: component_ids)
+  end
+
+  def execute
+    if self.valid?
+      if move_command?
+        old_stage = self.user.character.stage
+        new_stage = self.direct.to
+        if old_stage.passages_out.includes(new_stage)
+          self.user.character.update(stage: new_stage)
+          user.character.broadcast_remove_to old_stage
+          user.character.broadcast_append_to new_stage
+          return true
+        end
+      end
+    end
+
+    false
   end
 end

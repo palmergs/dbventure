@@ -10,11 +10,11 @@ class GamesController < ApplicationController
   def update
     @stage = current_user.character.stage
     command = Command.new(create_params)
-    if command.move_command? && @stage.passages_out.includes(command.direct)
-      @stage = command.direct.to
-      current_user.character.update(stage: @stage)
-      render :show
+    command.user = current_user
+    if command.execute
+      @stage = current_user.character.stage
     end
+    render :show 
   end
 
   private

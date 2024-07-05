@@ -1,0 +1,20 @@
+= turbo_stream_from stage
+.stage{id: dom_id(stage) }
+.field
+  .label Name:
+  %h2= stage.name
+.field
+  .label Description:
+  = stage.description
+.field
+  .label Actors
+  #actors
+    = render stage.actors
+.field
+  .label Props
+  #props
+    = render stage.props
+.field
+  .label Passages
+  #passages
+    = render stage.passages_out
