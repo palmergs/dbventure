@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :items
     resources :creatures
     resources :stages
+    resources :notifications, only: %i[index create]
   end
 
   resource :profile, only: %i[show update]

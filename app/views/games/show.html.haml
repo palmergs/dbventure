@@ -15,6 +15,10 @@
       .field
         .label Creature
         = current_user.character.creature.name
+    .flex-1
+      %h3 Notifications
+      = turbo_stream_from :notifications
+      #notifications
 
 
 

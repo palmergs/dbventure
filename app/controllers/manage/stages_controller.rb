@@ -20,7 +20,7 @@ class Manage::StagesController < ManageController
     @stage = Stage.new(stage_params)
 
     if @stage.save
-      redirect_to @stage, notice: "Stage was successfully created."
+      redirect_to manage_stages_url, notice: "Stage was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class Manage::StagesController < ManageController
 
   def update
     if @stage.update(stage_params)
-      redirect_to @stage, notice: "Stage was successfully updated.", status: :see_other
+      redirect_to manage_stages_url, notice: "Stage was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class Manage::StagesController < ManageController
 
   def destroy
     @stage.destroy!
-    redirect_to stages_url, notice: "Stage was successfully destroyed.", status: :see_other
+    redirect_to manage_stages_url, notice: "Stage was successfully destroyed.", status: :see_other
   end
 
   private

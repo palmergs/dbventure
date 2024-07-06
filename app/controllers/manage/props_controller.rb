@@ -20,7 +20,7 @@ class Manage::PropsController < ManageController
     @prop = Prop.new(prop_params)
 
     if @prop.save
-      redirect_to [:manage, @prop], notice: "Prop was successfully created."
+      redirect_to manage_props_url, notice: "Prop was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class Manage::PropsController < ManageController
 
   def update
     if @prop.update(prop_params)
-      redirect_to [:manage, @prop], notice: "Prop was successfully updated.", status: :see_other
+      redirect_to manage_props_url, notice: "Prop was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end

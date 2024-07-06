@@ -1,0 +1,5 @@
+:queues:
+  - [command, 4]
+  - [notification 3]
+  - [environment 2]
+  - [mailers, 1]

@@ -17,7 +17,7 @@ class Manage::ItemsController < ManageController
     @item = Item.new(item_params)
 
     if @item.save
-      redirect_to [:manage, @item], notice: "Item was successfully created."
+      redirect_to manage_items_url, notice: "Item was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,7 +25,7 @@ class Manage::ItemsController < ManageController
 
   def update
     if @item.update(item_params)
-      redirect_to [:manage, @item], notice: "Item was successfully updated.", status: :see_other
+      redirect_to manage_items_url, notice: "Item was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end

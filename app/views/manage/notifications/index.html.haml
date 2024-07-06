@@ -1,0 +1,13 @@
+.w-full
+  %h2 Send a Notification
+  = form_for :notification do |f|
+    .field
+      .label Stage
+      = f.collection_select :stage_id, Stage.order(:name), :id, :name, { include_blank: true }, class: 'input'
+    .field
+      .label Message
+      = f.text_field :message, class: 'input'
+    .field
+      = f.submit "Send", class: 'btn action-confirm'
+
+

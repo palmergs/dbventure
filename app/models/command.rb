@@ -1,51 +1,21 @@
 class Command < ApplicationRecord
-  enum command: %i[attack
-                   apply
-                   cast
-                   clean
-                   climb
-                   close
-                   craft
-                   drink
-                   drop
-                   eat
-                   engrave
-                   examine
+  enum command: %i[attack apply
+                   broadcast
+                   cast clean climb close craft
+                   drink drop
+                   eat engrave examine
                    get
                    insult
-                   leave
-                   look
-                   mix
-                   move
-                   offer
-                   open
-                   pickup
-                   praise
-                   pray
+                   leave look
+                   mix move
+                   offer open
+                   pickup praise pray
                    quit
-                   read
-                   remove
-                   rest
-                   rub
-                   run
-                   say
-                   speak
-                   shoot
-                   sip
-                   sit
-                   sleep
-                   store
-                   swing
-                   target
-                   taste
-                   taunt
-                   throw
-                   topple
+                   read remove rest rub run
+                   say speak shoot sip sit sleep store swing
+                   target taste taunt throw topple
                    use
-                   wait
-                   walk
-                   wear
-                   wield
+                   wait walk wear wield
                    yell
                    zzz], _suffix: 'command'
 
@@ -79,14 +49,15 @@ class Command < ApplicationRecord
         if stage.passages_out.includes(new_stage)
           actor.update(stage: new_stage)
           actor.broadcast_remove_to stage
-          actor.broadcast_append_to stage,
-                                    partial: "notifications/notification",
-                                    target: "notifications",
-                                    locals: { message: "#{ actor.name } has left" }
-          actor.broadcast_append_to new_stage,
-                                    partial: "notifications/notification",
-                                    target: "notifications",
-                                    locals: { message: "#{ actor.name } has arrived" }
+          broadcast_append_to stage,
+                              partial: "notifications/notification",
+                              target: "notifications",
+                              locals: { message: "#{ actor.name } has left" }
+          actor.broadcast_append_to new_stage
+          broadcast_append_to new_stage,
+                              partial: "notifications/notification",
+                              target: "notifications",
+                              locals: { message: "#{ actor.name } has arrived" }
           return true
         end
       end
