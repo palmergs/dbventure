@@ -15,5 +15,8 @@ class Command::Move < Command
                         partial: "notifications/notification",
                         target: "notifications",
                         locals: { message: "#{ actor.name } has arrived" }
+   
+    Rails.logger.info("*** Returning true from execute command")
+    true
   end
 end

@@ -27,8 +27,9 @@ class Command < ApplicationRecord
       end
 
       true
+    else
+      Rails.logger.debug(self.errors)
+      false
     end
-
-    false
   end
 end

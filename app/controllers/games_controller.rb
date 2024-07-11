@@ -13,8 +13,16 @@ class GamesController < ApplicationController
     command.user = current_user
     if command.execute
       @stage = current_user.character.stage
+      render :show 
+    else
+      Rails.logger.warn("!!! EXECUTE WAS UNSUCCESSFUL :-(")
+      Rails.logger.debug(command.inspect)
+      command.broadcast_append_to @stage,
+                                  partial: "notifications/notification",
+                                  target: "notifications",
+                                  locals: { message: "Something went wrong..." }
+      render :show
     end
-    render :show 
   end
 
   private
