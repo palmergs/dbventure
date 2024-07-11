@@ -20,7 +20,7 @@ class GamesController < ApplicationController
   private
 
   def create_params
-    params.permit(:command,
+    params.permit(:type,
                   :direct_id,
                   :direct_type,
                   :indirect_id,

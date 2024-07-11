@@ -5,4 +5,8 @@ class Passage < ApplicationRecord
   belongs_to :to, class_name: "Stage"
 
   validates :direction, presence: true, uniqueness: { scope: :from_id }
+
+  def open?
+    true
+  end
 end

@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_011433) do
 
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
-  create_enum "action_type", ["attack", "apply", "build", "cast", "clean", "drink", "drop", "eat", "engrave", "examine", "get", "look", "move", "pickup", "pray", "read", "remove", "rub", "say", "shoot", "sit", "store", "swing", "throw", "use", "wait", "wear", "wield", "zzz"]
+  create_enum "outcome_enum", ["attacked", "killed", "crafted", "built", "discovered", "destroyed"]
 
   create_table "actors", force: :cascade do |t|
     t.bigint "stage_id", null: false
@@ -32,25 +32,29 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_011433) do
   end
 
   create_table "commands", force: :cascade do |t|
+    t.string "type", null: false
     t.bigint "stage_id", null: false
     t.bigint "user_id", null: false
     t.bigint "actor_id", null: false
-    t.enum "action", null: false, enum_type: "action_type"
     t.string "direct_type"
     t.bigint "direct_id"
     t.string "indirect_type"
     t.bigint "indirect_id"
+    t.bigint "component_ids", default: [], null: false, array: true
     t.integer "count", default: 0, null: false
     t.string "comment"
     t.string "slots", default: [], null: false, array: true
+    t.enum "outcome", null: false, enum_type: "outcome_enum"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["action"], name: "index_commands_on_action"
+    t.index ["actor_id", "outcome"], name: "index_commands_on_actor_id_and_outcome"
     t.index ["actor_id"], name: "index_commands_on_actor_id"
     t.index ["direct_id", "direct_type"], name: "index_commands_on_direct_id_and_direct_type"
     t.index ["direct_type", "direct_id"], name: "index_commands_on_direct"
+    t.index ["id", "type"], name: "index_commands_on_id_and_type"
     t.index ["indirect_id", "indirect_type"], name: "index_commands_on_indirect_id_and_indirect_type"
     t.index ["indirect_type", "indirect_id"], name: "index_commands_on_indirect"
+    t.index ["outcome"], name: "index_commands_on_outcome"
     t.index ["stage_id"], name: "index_commands_on_stage_id"
     t.index ["user_id"], name: "index_commands_on_user_id"
   end
