@@ -88,6 +88,7 @@ goblin = Creature.create!(name: "Goblin", description: "Short and scrawny inhabi
 rat = Creature.create!(name: "Rat", description: "Dark grey furred vermin common in cities.")
 
 dime = Item.create(name: "Silver Dime", description: "A simple silver coin that is the most common unit of currency")
+dagger = Item.create(name: "Dagger", description: "A simple steel dagger with a handle wrapped in crude leather")
 shortsword = Item.create(name: "Shortsword", description: "A single handed sword with a blade of less than 2' (60cm)")
 shortbow = Item.create!(name: "Shortbow", description: "A yew bow small enough to use from horseback or in tight quarters.")
 arrow = Item.create!(name: "Arrow", description: "A simple ash arrow with goose feather fletchings and an iron arrowhead.")

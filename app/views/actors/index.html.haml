@@ -1,3 +1,8 @@
+.flex-none.w-48
+  %ul
+    %li= link_to "Profile", profile_path, class: "link"
+    %li= link_to "Game", game_path, class: "link"
+    %li= link_to "Characters", actors_path, class: "link"
 .flex-1
   %h1 Characters
 
@@ -17,16 +22,16 @@
         = current_user.character.creature.name
         )
 
-    %h3 Owned Characters
-    - if current_user.actors.present?
-      - current_user.actors.each do |actor|
-        .character-row
-          = link_to actor_path(actor), class: 'link' do
-            = actor.name 
-            (
-            = actor.creature.name
-            )
-          = link_to "Edit", edit_actor_path(actor), class: 'btn action-edit'
-    = link_to "New Character", new_actor_path, class: 'btn action-new' 
+  %h3 Owned Characters
+  - if current_user.actors.present?
+    - current_user.actors.each do |actor|
+      .character-row
+        = link_to actor_path(actor), class: 'link' do
+          = actor.name 
+          (
+          = actor.creature.name
+          )
+        = link_to "Edit", edit_actor_path(actor), class: 'btn action-edit'
+  = link_to "New Character", new_actor_path, class: 'btn action-new' 
 
 

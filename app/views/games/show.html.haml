@@ -12,13 +12,11 @@
       .field
         .label Name
         = current_user.character.name
+        = "(#{ current_user.character.creature.name })"
       .field
-        .label Creature
-        = current_user.character.creature.name
-    .flex-1
-      %h3 Notifications
-      = turbo_stream_from :notifications
-      #notifications
+        .label Inventory
+        - current_user.character.props.each do |prop|
+          = link_to prop.name, game_prop_path(prop), data: { turbo_frame: "display-info"}, class: "link"
 
 
 

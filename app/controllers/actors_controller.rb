@@ -18,6 +18,12 @@ class ActorsController < ApplicationController
     @character.user = current_user
     @character.stage = current_user.lobby
     if @character.save
+      
+      dagger = Item.find_by(name: "Dagger")
+      if dagger
+        @character.props.create(item: dagger)
+      end
+
       redirect_to @character
     else
       render :new
