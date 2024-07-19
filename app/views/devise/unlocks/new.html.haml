@@ -1,0 +1,10 @@
+.flex-0.mx-auto.w-96
+  %h2 Resend unlock instructions
+  = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .field
+      = f.label :email, class: 'label'
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input'
+    .field
+      = f.submit "Resend unlock instructions", class: 'btn action-confirm'
+  = render "devise/shared/links"

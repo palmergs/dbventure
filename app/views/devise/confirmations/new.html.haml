@@ -1,0 +1,10 @@
+.flex-0.w-96.mx-auto
+  %h2 Resend Confirmation Instructions
+  = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .field
+      = f.label :email, class: 'label'
+      = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'input'
+    .field
+      = f.submit "Resend confirmation instructions", class: 'btn action-confirm'
+  = render "devise/shared/links"

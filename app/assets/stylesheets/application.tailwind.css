@@ -78,9 +78,15 @@
     @apply block mb-1 text-sm font-medium text-gray-900 capitalize;
   }
 
+  .label-inline {
+    @apply block mb-1 text-sm font-medium text-gray-900 capitalize;
+  }
+
   .input {
     @apply block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-sky-500 focus:border-sky-500;
   }
 
+  .input-cb {
+    @apply focus:ring-sky-500 focus:border-sky-500;
 }
 
