@@ -1,2 +1,12 @@
 .prop{id: dom_id(prop)}
-  = link_to prop.name, game_prop_path(prop), data: { turbo_frame: "display-info" }, class: 'link'
+  = link_to game_prop_path(prop), data: { turbo_frame: "display-info" }, class: 'link' do
+    = prop.name
+  - if prop.carried?(character)
+    = command("Drop", direct: prop)
+    = command("Use", direct: prop)
+  - elsif prop.carried?
+    = command("Steal", direct: prop)
+  - if prop.dropped?
+    = command("Get", direct: prop)
+  - if prop.stored?
+    = command("Equip", direct: prop)

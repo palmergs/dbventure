@@ -9,15 +9,18 @@
 .field
   .label Actors
   #actors
-    = render stage.actors
+    - stage.actors.each do |actor|
+      = render partial: 'actors/actor', locals: { actor: actor, character: character }
 .field
   .label Props
   #props
-    = render stage.props
+    - stage.props.each do |prop|
+      = render partial: 'props/prop', locals: { prop: prop, character: character }
 .field
   .label Passages
   #passages
-    = render stage.passages_out
+    - stage.passages_out.each do |passage|
+      = render partial: 'passages/passage', locals: { passage: passage, character: character }
 .field
   .label Notifications
   #notifications

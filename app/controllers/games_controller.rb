@@ -5,6 +5,7 @@ class GamesController < ApplicationController
 
   def show
     @stage = current_user.character.stage
+    @character = current_user.character
   end
 
   def update
@@ -13,15 +14,10 @@ class GamesController < ApplicationController
     command.user = current_user
     if command.execute
       @stage = current_user.character.stage
-      render :show 
-    else
-      Rails.logger.warn("!!! EXECUTE WAS UNSUCCESSFUL :-(")
-      Rails.logger.debug(command.inspect)
-      command.broadcast_append_to @stage,
-                                  partial: "notifications/notification",
-                                  target: "notifications",
-                                  locals: { message: "Something went wrong..." }
+      @character = current_user.character
       render :show
+    else
+      head :ok
     end
   end
 

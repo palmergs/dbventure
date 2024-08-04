@@ -1,4 +1,17 @@
 class Command < ApplicationRecord
+  class Result
+    attr_reader :render, :success
+    def initialize render, success = true, outcome = nil
+      @render = render
+      @success = success
+      @outcome = outcome
+    end
+
+    def outcome
+      success ? @outcome : false
+    end
+  end
+
   enum outcome: %i[attacked
                    killed
                    crafted
@@ -11,6 +24,10 @@ class Command < ApplicationRecord
   belongs_to :direct, polymorphic: true, optional: true
   belongs_to :indirect, polymorphic: true, optional: true
 
+  validates :stage, presence: true
+  validates :actor, presence: true
+  validates :direct, presence: true
+
   before_validation on: :create do
     self.actor = self.user.character unless self.actor
     self.stage = self.user.character.stage unless self.stage
@@ -21,15 +38,11 @@ class Command < ApplicationRecord
   end
 
   def execute
-    if self.valid?
-      if self.execute_command && self.outcome
-        self.save!
-      end
+    raise RuntimeError, "command was not valid #{ self.inspect }" unless self.valid?
 
-      true
-    else
-      Rails.logger.debug(self.errors)
-      false
-    end
+    result = self.execute_command
+    self.save! if result.outcome
+
+    result.render
   end
 end

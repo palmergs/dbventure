@@ -1,0 +1,11 @@
+= turbo_stream_from character
+.character{id: dom_id(character)}
+.field
+  .label Name
+  = character.name
+  = "(#{ character.creature.name })"
+.field
+  .label Inventory
+  #inventory
+    - character.props.each do |prop|
+      = render partial: 'props/prop', locals: { prop: prop, character: character }

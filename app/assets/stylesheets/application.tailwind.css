@@ -88,5 +88,6 @@
 
   .input-cb {
     @apply focus:ring-sky-500 focus:border-sky-500;
+  }
 }
 

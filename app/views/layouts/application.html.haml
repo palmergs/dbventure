@@ -10,5 +10,8 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   %body
-    %main.w-full.flex.flex-col.sm:flex-row.flex-wrap.sm:flex-nowrap.py-4.flex-grow
+    %header.w-full.p-4
+      - if user_signed_in?
+        = link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: 'link'
+    %main.w-full.mt-8.p-4.flex.flex-col.sm:flex-row.flex-wrap.sm:flex-nowrap
       = yield

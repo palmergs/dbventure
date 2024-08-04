@@ -22,11 +22,16 @@ class Prop < ApplicationRecord
     slotted.is_a?(Item)
   end
 
-  def carried?
-    slotted.is_a?(Actor)
+  def carried? by=nil
+    if by
+      slotted.is_a?(Actor) && slotted == by
+    else
+      slotted.is_a?(Actor)
+    end
   end
 
   def dropped?
     slotted.is_a?(Stage)
   end
+
 end

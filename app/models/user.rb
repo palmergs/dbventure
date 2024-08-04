@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
   belongs_to :character, class_name: "Actor", optional: true, foreign_key: :character_id, inverse_of: :player
   has_one :stage, through: :character
+  has_many :props, through: :character
 
   belongs_to :lobby, class_name: 'Stage', optional: true, foreign_key: :stage_id, inverse_of: :lobbies
 
