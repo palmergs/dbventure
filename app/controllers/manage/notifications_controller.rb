@@ -1,6 +1,5 @@
 class Manage::NotificationsController < ManageController
   def index
-
   end
 
   def create

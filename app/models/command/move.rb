@@ -19,7 +19,7 @@ class Command::Move < Command
         partial: "notifications/notification",
         target: "notifications",
         locals: { message: "#{ actor.name } has arrived" }
-   
+
     Command::Result.new(true)
   end
 end

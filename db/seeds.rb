@@ -13,7 +13,7 @@
 
 courtyard = Stage.create!(
   name: "Courtyard",
-  description: <<~STR 
+  description: <<~STR
     A large open area surrounded by a tall stone wall
     except to the north where there is a forboding stone keep.
   STR
@@ -30,7 +30,7 @@ hall = Stage.create!(
 gatehouse = Stage.create!(
   name: "Gatehouse",
   description: <<~STR
-    The bottom floor of the gatehouse is a single large room where the 
+    The bottom floor of the gatehouse is a single large room where the#{' '}
     soldiers defending the fortree can gather.
   STR
 )
@@ -38,8 +38,8 @@ gatehouse = Stage.create!(
 gatehouse_platform = Stage.create!(
   name: "Gatehouse",
   description: <<~STR
-    A large platform protected by stone crenelations looks over 
-    the approach to the fortress gate to the south and north 
+    A large platform protected by stone crenelations looks over#{' '}
+    the approach to the fortress gate to the south and north#{' '}
     into the courtyard.
   STR
 )
@@ -98,16 +98,12 @@ urg = Actor.create!(name: "Urg the Gatekeeper",
                     description: "A larger than average orc with a scar on his right cheek",
                     creature: orc,
                     stage: gate)
-urg.props.create!(item: shortsword, name: "Shortsword", slots: ["Right Hand"])
+urg.props.create!(item: shortsword, name: "Shortsword", slots: [ "Right Hand" ])
 
 griv = Actor.create!(name: "Griv the Archer",
                      description: "A wiry and shifty looking goblin",
                      creature: goblin,
                      stage: gatehouse_platform)
-griv.props.create!(item: shortbow, name: "Shortbow", slots: ["Right Hand", "Left Hand"])
-quiver = griv.props.create!(item: quiver, name: "Quiver", slots: ["Back"])
-quiver.props.create!(item: arrow, name: "Arrow", slots: ["Stored"])
-
-
-
-
+griv.props.create!(item: shortbow, name: "Shortbow", slots: [ "Right Hand", "Left Hand" ])
+quiver = griv.props.create!(item: quiver, name: "Quiver", slots: [ "Back" ])
+quiver.props.create!(item: arrow, name: "Arrow", slots: [ "Stored" ])

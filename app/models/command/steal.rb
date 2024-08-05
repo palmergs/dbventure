@@ -10,4 +10,3 @@ class Command::Steal < Command
     Command::Result.new(false)
   end
 end
-

@@ -1,7 +1,7 @@
 class Command < ApplicationRecord
   class Result
     attr_reader :render, :success
-    def initialize render, success = true, outcome = nil
+    def initialize(render, success = true, outcome = nil)
       @render = render
       @success = success
       @outcome = outcome
@@ -16,7 +16,7 @@ class Command < ApplicationRecord
                    killed
                    crafted
                    discovered
-                   destroyed], _prefix: 'outcome'
+                   destroyed], _prefix: "outcome"
 
   belongs_to :stage
   belongs_to :user

@@ -14,7 +14,7 @@ class CreateCommands < ActiveRecord::Migration[7.1]
       t.references :actor, null: false, foreign_key: true, index: true
       t.references :direct, polymorphic: true, null: true
       t.references :indirect, polymorphic: true, null: true
-      
+
       # prop_ids for use in build/craft commands
       t.bigint :component_ids, null: false, array: true, default: []
       t.integer :count, null: false, default: 0

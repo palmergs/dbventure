@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_one :stage, through: :character
   has_many :props, through: :character
 
-  belongs_to :lobby, class_name: 'Stage', optional: true, foreign_key: :stage_id, inverse_of: :lobbies
+  belongs_to :lobby, class_name: "Stage", optional: true, foreign_key: :stage_id, inverse_of: :lobbies
 
   validates :email, presence: true, uniqueness: true
   validates :character_id, uniqueness: { allow_nil: true }
@@ -25,9 +25,9 @@ class User < ApplicationRecord
 
   def generate_lobby
     unless self.lobby
-      stage = Stage.create!(name: 'Your Home')
-      passage = Passage.create!(name: 'A doorway leads to adventure...',
-                               direction: 'Adventure',
+      stage = Stage.create!(name: "Your Home")
+      passage = Passage.create!(name: "A doorway leads to adventure...",
+                               direction: "Adventure",
                                from: stage,
                                to: Stage.where(start_location: true).sample)
       self.update(lobby: stage)

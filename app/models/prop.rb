@@ -10,19 +10,19 @@ class Prop < ApplicationRecord
     self.name = item.name if name.blank?
   end
 
-  def slots_str= str
+  def slots_str=(str)
     self.slots = str.present? ? str.split(/\s*[,]\s*/) : []
   end
 
   def slots_str
-    self.slots.join(', ')
+    self.slots.join(", ")
   end
 
   def stored?
     slotted.is_a?(Item)
   end
 
-  def carried? by=nil
+  def carried?(by = nil)
     if by
       slotted.is_a?(Actor) && slotted == by
     else
@@ -33,5 +33,4 @@ class Prop < ApplicationRecord
   def dropped?
     slotted.is_a?(Stage)
   end
-
 end

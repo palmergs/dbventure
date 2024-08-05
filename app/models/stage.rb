@@ -5,7 +5,7 @@ class Stage < ApplicationRecord
   has_many :props, as: :slotted, dependent: :restrict_with_exception
   has_many :passages_in, class_name: "Passage", foreign_key: :to_id
   has_many :passages_out, class_name: "Passage", foreign_key: :from_id
-  has_many :lobbies, class_name: 'User', foreign_key: :stage_id
+  has_many :lobbies, class_name: "User", foreign_key: :stage_id
 
   validates :name, presence: true
 

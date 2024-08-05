@@ -1,7 +1,7 @@
 class NotificationJob < ApplicationJob
   queue_as :default
 
-  def perform message, stage_id = nil
+  def perform(message, stage_id = nil)
     if stage_id.present?
       stage = Stage.find(stage_id)
       stage.broadcast_append_to stage,

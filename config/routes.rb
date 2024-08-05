@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resource :profile, only: %i[show update]
-  resources :actors, path: 'characters', except: %i[destroy]
+  resources :actors, path: "characters", except: %i[destroy]
   resource :game, only: %i[show update] do
     resources :props, only: %i[index show], controller: "game/props"
     resources :passages, only: %i[index show], controller: "game/passages"
