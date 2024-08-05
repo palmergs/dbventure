@@ -46,6 +46,14 @@
     @apply w-96;
   }
 
+  td.actions {
+    @apply w-40 text-center;
+  }
+
+  td.actions > a {
+    @apply mx-1;
+  }
+
   .action-new {
     @apply text-white bg-green-700 hover:bg-green-900 focus:ring-4 focus:ring-green-300;
   }

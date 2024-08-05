@@ -20,7 +20,7 @@ class Manage::CreaturesController < ManageController
     @creature = Creature.new(creature_params)
 
     if @creature.save
-      redirect_to manage_cratures_url, notice: "Creature was successfully created."
+      redirect_to manage_creatures_url, notice: "Creature was successfully created."
     else
       render :new, status: :unprocessable_entity
     end

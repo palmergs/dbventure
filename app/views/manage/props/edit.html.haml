@@ -1,7 +1,9 @@
-.grow-1
-  %h1 Editing prop
+.flex-1
+  %h2 Editing Prop
 
   = render 'form'
+
+  %hr.my-2
 
   = link_to 'Show', [:manage, @prop], class: 'btn action-show'
   = link_to 'Back', manage_props_path, class: 'btn action-cancel'

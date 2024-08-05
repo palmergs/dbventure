@@ -10,7 +10,9 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   %body
-    %header.container.mx-auto
+    %header.container.mx-auto.mt-2
+      = link_to root_path do
+        = icon("fa-solid", "house", class: "fa-2x text-stone-600")
       = link_to 'Stages', manage_stages_path, class: 'link'
       = link_to 'Passages', manage_passages_path, class: 'link'
       = link_to 'Creatures', manage_creatures_path, class: 'link'
@@ -19,5 +21,11 @@
       = link_to 'Props', manage_props_path, class: 'link'
       = link_to 'Notifications', manage_notifications_path, class: 'link'
     %main.container.mx-auto
-      .w-full.flex.flex-col.sm:flex-row.flex-wrap.sm:flex-nowrap.py-4.flex-grow
+      - if alert
+        .w-full.flex.flex-col.sm:flex-row.flex-wrap.sm:flex-nowrap.p-4.mt-4.rounded-lg.border-2.border-red-500.bg-red-50.text-red-950
+          %h3= alert
+      - if notice
+        .w-full.flex.flex-col.sm:flex-row.flex-wrap.sm:flex-nowrap.p-4.mt-4.rounded-lg.border-2.border-cyan-500.bg-cyan-50.text-cyan-950
+          %h3= notice
+      .w-full.flex.flex-col.sm:flex-row.flex-wrap.sm:flex-nowrap.p-4.mt-4.rounded-lg.border-2.border-slate-500
         = yield

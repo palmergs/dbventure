@@ -1,17 +1,11 @@
 = form_for [:manage, @prop] do |f|
-  - if @prop.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@prop.errors.count, "error")} prohibited this prop from being saved:"
-      %ul
-        - @prop.errors.full_messages.each do |message|
-          %li= message
-
+  = render partial: 'manage/errors', locals: { model: @prop }
   .field
     = f.label :item, class: 'label'
-    = f.collection_select :item_id, Item.order(:name), :id, :name
+    = f.collection_select :item_id, Item.order(:name), :id, :name, { include_blank: true }, class: 'input'
   .field
     = f.label :actor, class: 'label'
-    = f.collection_select :slotted_id, Actor.order(:name), :id, :name
+    = f.collection_select :slotted_id, Actor.order(:name), :id, :name, { include_blank: true }, class: 'input'
     = f.hidden_field :slotted_type, value: 'Actor'
   .field
     = f.label :name, class: 'label'

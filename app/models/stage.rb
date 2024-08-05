@@ -7,6 +7,8 @@ class Stage < ApplicationRecord
   has_many :passages_out, class_name: "Passage", foreign_key: :from_id
   has_many :lobbies, class_name: 'User', foreign_key: :stage_id
 
+  validates :name, presence: true
+
   def notifications
     []
   end

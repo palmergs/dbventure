@@ -5,7 +5,7 @@ source "https://rubygems.org"
 ruby "3.3.1"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.3", ">= 7.1.3.4"
+gem "rails", "~> 7.1", ">= 7.1.3.4"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails", "~> 3.5"
@@ -27,6 +27,8 @@ gem "stimulus-rails", "~> 1.3"
 
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails", "~> 2.6"
+
+gem "font-awesome-sass", "~> 6.5"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.2"

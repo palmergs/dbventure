@@ -1,14 +1,43 @@
-.grow-1
-  %p#notice= notice
+.flex-1
+  .field
+    .label Name:
+    = @stage.name
+  .field
+    .label Description:
+    = @stage.description
+  .field
+    .label Passages Out:
+    - if @stage.passages_out.present?
+      %ul.list-none
+        - @stage.passages_out.each do |passage|
+          %li= link_to "#{ passage.name } (#{ passage.direction })", manage_passage_path(passage), class: 'link'
+    - else
+      %p No outgoing passages
+  .field
+    .label Passages In:
+    - if @stage.passages_in.present?
+      %ul.list-none
+        - @stage.passages_in.each do |passage|
+          %li= link_to "#{ passage.name } (#{ passage.direction })", manage_passage_path(passage), class: 'link'
+    - else
+      %p No incoming passages
+  .field
+    .label Actors
+    - if @stage.actors.present?
+      %ul.list-none
+        - @stage.actors.each do |actor|
+          %li= link_to "#{ actor.name } (#{ actor.creature.name })", manage_actor_path(actor), class: 'link'
+    - else
+      %p No actors
+  .field
+    .label Props
+    - if @stage.props.present?
+      %ul.list-none
+        - @stage.props.each do |prop|
+          %li= link_to "#{ prop.name } (#{ prop.item.name })", manage_prop_path(prop), class: 'link'
+    - else
+      %p No props
 
-  .flex
-    .grow-1
-      %h3 Game
-      = turbo_frame_tag "display-stage", src: game_path do
-        %p Game is not loading...
-    .grow-0
-      %h4 Description
-      = turbo_frame_tag "display-info" 
 
   = link_to 'Edit', edit_manage_stage_path(@stage), class: 'btn action-edit'
   = link_to 'Back', manage_stages_path, class: 'btn action-cancel'

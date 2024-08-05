@@ -1,0 +1,9 @@
+- if model.errors.any?
+  #error_explanation
+    %h3= "#{pluralize(model.errors.count, "error")} prohibited this stage from being saved:"
+    %ul
+      - model.errors.full_messages.each do |message|
+        %li.flex.flex-row.py-3
+          .bg-red-500.inline-block.rounded-lg.p-1.mr-1
+          %p.p-1.text-red-950= message
+

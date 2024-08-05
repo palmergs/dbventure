@@ -1,17 +1,11 @@
 = form_for [:manage, @actor] do |f|
-  - if @actor.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@actor.errors.count, "error")} prohibited this actor from being saved:"
-      %ul
-        - @actor.errors.full_messages.each do |message|
-          %li= message
-
+  = render partial: 'manage/errors', locals: { model: @actor }
   .field
     = f.label :stage, class: 'label'
-    = f.collection_select :stage_id, Stage.order(:name), :id, :name
+    = f.collection_select :stage_id, Stage.order(:name), :id, :name, { include_blank: true },  class: 'input'
   .field
     = f.label :creature, class: 'label'
-    = f.collection_select :creature_id, Creature.order(:name), :id, :name
+    = f.collection_select :creature_id, Creature.order(:name), :id, :name, { include_blank: true }, class: 'input'
   .field
     = f.label :name, class: 'label'
     = f.text_field :name, class: 'input'

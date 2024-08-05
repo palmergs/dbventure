@@ -1,7 +1,11 @@
-.grow-1
-  %h1 Editing item
+.flex-1
+  %h2
+    Edit Item
+    = @item.name
 
   = render 'form'
+
+  %hr.my-2
 
   = link_to 'Show', [:manage, @item], class: 'btn action-show'
   = link_to 'Back', manage_items_path, class: 'btn action-cancel'

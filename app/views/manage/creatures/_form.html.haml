@@ -1,11 +1,5 @@
 = form_for [:manage, @creature] do |f|
-  - if @creature.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@creature.errors.count, "error")} prohibited this creature from being saved:"
-      %ul
-        - @creature.errors.full_messages.each do |message|
-          %li= message
-
+  = render partial: 'manage/errors', locals: { model: @creature }
   .field
     = f.label :name, class: 'label'
     = f.text_field :name, class: 'input'

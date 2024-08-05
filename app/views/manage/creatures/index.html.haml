@@ -1,9 +1,10 @@
-.w-full
+.flex-1
   %h1 Listing creatures
 
   %table.w-full
     %thead
       %tr
+        %th ID
         %th Name
         %th Description
         %th
@@ -11,11 +12,15 @@
     %tbody
       - @creatures.each do |creature|
         %tr
+          %td= creature.id
           %td= creature.name
           %td= creature.description
-          %td
-            = link_to 'Show', manage_creature_path(creature), class: 'btn action-show'
-            = link_to 'Edit', edit_manage_creature_path(creature), class: 'btn action-edit'
-            = link_to 'Destroy', manage_creature_path(creature), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn action-delete'
+          %td.actions
+            = link_to manage_creature_path(creature), class: 'btn-round action-show' do
+              = fa_icon('eye')
+            = link_to edit_manage_creature_path(creature), class: 'btn-round action-edit' do
+              = fa_icon('pencil')
+            = link_to manage_creature_path(creature), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-round action-delete' do
+              = fa_icon('trash')
 
   = link_to 'New Creature', new_manage_creature_path, class: 'btn action-new'

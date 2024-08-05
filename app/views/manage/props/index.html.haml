@@ -1,9 +1,10 @@
-.w-full
-  %h1 Listing props
+.flex-1
+  %h2 Listing Props
 
   %table.w-full
     %thead
       %tr
+        %th ID
         %th Item
         %th Slotted
         %th Name
@@ -13,6 +14,7 @@
     %tbody
       - @props.each do |prop|
         %tr
+          %td= prop.id
           %td= link_to prop.item.name, manage_item_path(prop.item), class: 'link'
           %td
             - if prop.slotted.is_a?(Actor)
@@ -23,13 +25,15 @@
               = link_to prop.slotted.name, manage_stage_path(prop.slotted), class: 'link'
           %td= prop.name
           %td= prop.slots
-          %td
-            = link_to 'Show', manage_prop_path(prop), class: 'btn action-show'
-            = link_to 'Edit', edit_manage_prop_path(prop), class: 'btn action-edit'
-            = link_to 'Destroy',
-                      manage_prop_path(prop),
-                      method: :delete,
-                      data: { turbo_method: :delete, confirm: 'Are you sure?' },
-                      class: 'btn action-delete'
+          %td.actions
+            = link_to manage_prop_path(prop), class: 'btn-round action-show' do
+              = fa_icon('eye')
+            = link_to edit_manage_prop_path(prop), class: 'btn-round action-edit' do
+              = fa_icon('pencil')
+            = link_to manage_prop_path(prop),
+                method: :delete,
+                data: { turbo_method: :delete, confirm: 'Are you sure?' },
+                class: 'btn-round action-delete' do
+              = fa_icon('trash')
 
   = link_to 'New Prop', new_manage_prop_path, class: 'btn action-new'

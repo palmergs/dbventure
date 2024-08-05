@@ -1,7 +1,8 @@
-.grow-1
-  %h1 Home
+.flex-1
+  %h2 Database Adventure
   %p= "#{ @page_hits } page views"
 
-  %h1 Actions
-  = link_to "Play the Game", game_path
-  = link_to "View your Profile", profile_path
+  %h3 Actions
+  = link_to "Play the Game", game_path, class: 'link'
+  = link_to "View your Profile", profile_path, class: 'link'
+  = link_to 'Manage Assets', manage_path, class: 'link'
