@@ -12,4 +12,12 @@ class Stage < ApplicationRecord
   def notifications
     []
   end
+
+  def is_seen_from
+    passages_in.map(&:to)
+  end
+
+  def can_see_into
+    passages_out.map(&:from)
+  end
 end

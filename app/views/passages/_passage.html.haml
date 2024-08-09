@@ -1,7 +1,21 @@
-.passage{id: dom_id(passage)}
-  = link_to passage.name,
-            game_passage_path(passage),
-            data: { turbo_frame: "display-info" },
-            class: 'link'
-  = command(passage.direction, command: "Move", direct: passage)
+.passage.my-2{id: dom_id(passage)}
+  - if passage.compass?
+    To the 
+    = passage.direction
+    = command('Move', direct: passage)
+    through a 
+    = passage.name
+    you can see a 
+    = passage.to.name
+    = "."
+  - else
+    A
+    = passage.direction
+    = command('Move', direct: passage)
+    allows access to
+    = passage.to.name
+    = "."
+
+
+
 

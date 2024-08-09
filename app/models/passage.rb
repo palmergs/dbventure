@@ -9,4 +9,8 @@ class Passage < ApplicationRecord
   def open?
     true
   end
+
+  def compass?
+    %w[North South East West Northwest Northeast Southwest Southeast].include?(direction)
+  end
 end

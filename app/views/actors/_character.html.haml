@@ -6,6 +6,6 @@
   = "(#{ character.creature.name })"
 .field
   .label Inventory
-  #inventory
+  .target{id: "#{ dom_id(character) }_props"}
     - character.props.each do |prop|
       = render partial: 'props/prop', locals: { prop: prop, character: character }

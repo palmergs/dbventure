@@ -6,12 +6,12 @@ class Command::Drop < Command
 
     new_prop = self.stage.props.create(item: prop.item)
     new_prop.broadcast_append_to self.stage,
-        partial: "props/prop",
-        target: :props,
-        locals: { prop: prop, character: self.actor }
+        target: "stage_#{ self.stage.id }_props",
+        locals: { prop: prop, character: Actor.new }
+
     broadcast_append_to self.stage,
         partial: "notifications/notification",
-        target: "notifications",
+        target: "stage_#{ self.stage.id }_notifications",
         locals: { message: "#{ self.actor.name } dropped a #{ new_prop.name }" }
 
     Command::Result.new(false)
