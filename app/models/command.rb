@@ -19,18 +19,18 @@ class Command < ApplicationRecord
                    destroyed], _prefix: "outcome"
 
   belongs_to :stage
-  belongs_to :user
   belongs_to :actor
+  belongs_to :user, optional: true
   belongs_to :direct, polymorphic: true, optional: true
   belongs_to :indirect, polymorphic: true, optional: true
 
   validates :stage, presence: true
   validates :actor, presence: true
-  validates :direct, presence: true
 
   before_validation on: :create do
-    self.actor = self.user.character unless self.actor
-    self.stage = self.user.character.stage unless self.stage
+    self.actor = user.character unless actor
+    self.user = actor.character unless user
+    self.stage = actor.stage unless stage
   end
 
   def components

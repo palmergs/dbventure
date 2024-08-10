@@ -21,8 +21,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :character_id, uniqueness: { allow_nil: true }
 
-  after_create :generate_lobby
-
   def generate_lobby
     unless self.lobby
       stage = Stage.create!(name: "Your Home")

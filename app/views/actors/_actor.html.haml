@@ -1,4 +1,4 @@
-.target{id: dom_id(actor)}
+.inline.target{id: dom_id(actor)}
   = link_to actor.name, game_actor_path(actor), data: { turbo_frame: "display-info" }, class: 'link'
   a
   = link_to "#{ actor.creature.name }", game_creature_path(actor.creature), data: { turbo_frame: "display-info" }, class: 'link'

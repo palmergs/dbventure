@@ -7,7 +7,7 @@ class Command::Drop < Command
     new_prop = self.stage.props.create(item: prop.item)
     new_prop.broadcast_append_to self.stage,
         target: "stage_#{ self.stage.id }_props",
-        locals: { prop: prop, character: Actor.new }
+        locals: { prop: prop, character: Actor.new, for_stage: true }
 
     broadcast_append_to self.stage,
         partial: "notifications/notification",

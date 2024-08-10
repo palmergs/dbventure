@@ -6,25 +6,21 @@
 .field
   .label Description:
   = stage.description
-.field
-  .label Actors
-  .target{ id: "#{ dom_id(stage) }_actors" }
+  .inline.target{ id: "#{ dom_id(stage) }_actors" }
     - stage.actors.each do |actor|
       = render partial: 'actors/actor', locals: { actor: actor, character: character }
+    .inline.target{ id: "#{ dom_id(stage) }_props" }
+      - stage.props.each do |prop|
+        = render partial: 'props/prop', locals: { prop: prop, character: character, for_stage: true }
 .field
-  .label Props
-  .target{ id: "#{ dom_id(stage) }_props" }
-    - stage.props.each do |prop|
-      = render partial: 'props/prop', locals: { prop: prop, character: character }
-.field
-  .label Passages
-  #passages
+  .target{ id: "#{ dom_id(stage) }_passages" }
     - stage.passages_out.each do |passage|
-      = render partial: 'passages/passage', locals: { passage: passage, character: character }
-      = turbo_stream_from passage.to
-      .target{ id: "#{ dom_id(passage.to) }_actors" }
-        - passage.to.actors.each do |actor|
-          = render partial: 'actors/actor', locals: { actor: actor, character: character }
+      .my-2
+        = render partial: 'passages/passage', locals: { passage: passage, character: character }
+        = turbo_stream_from passage.to
+        .inline.target{ id: "#{ dom_id(passage.to) }_actors" }
+          - passage.to.actors.each do |actor|
+            = render partial: 'actors/actor', locals: { actor: actor, character: character }
       
 .field
   .label Notifications

@@ -1,8 +1,7 @@
-.passage.my-2{id: dom_id(passage)}
+.inline.target{id: dom_id(passage)}
   - if passage.compass?
     To the 
-    = passage.direction
-    = command('Move', direct: passage)
+    = command(passage.direction, command: 'Move', direct: passage)
     through a 
     = passage.name
     you can see a 
@@ -10,8 +9,7 @@
     = "."
   - else
     A
-    = passage.direction
-    = command('Move', direct: passage)
+    = command(passage.direction, command: 'Move', direct: passage)
     allows access to
     = passage.to.name
     = "."

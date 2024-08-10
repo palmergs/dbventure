@@ -8,7 +8,7 @@ class Command::Get < Command
     new_prop.broadcast_append_to self.actor,
         partial: "props/prop",
         target: "actor_#{ self.actor.id }_props",
-        locals: { prop: new_prop, character: self.actor }
+        locals: { prop: new_prop, character: self.actor, for_stage: false }
 
     broadcast_append_to self.stage,
         partial: "notifications/notification",

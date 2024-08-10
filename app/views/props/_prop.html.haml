@@ -1,4 +1,6 @@
-.prop{id: dom_id(prop)}
+.target{id: dom_id(prop), class: for_stage ? 'inline' : 'block' }
+  - if for_stage
+    A
   = link_to game_prop_path(prop), data: { turbo_frame: "display-info" }, class: 'link' do
     = prop.name
   - if prop.carried?(character)
@@ -10,3 +12,5 @@
     = command("Get", direct: prop)
   - if prop.stored?
     = command("Equip", direct: prop)
+  - if for_stage
+    is here.

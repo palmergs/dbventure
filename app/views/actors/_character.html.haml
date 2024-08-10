@@ -8,4 +8,4 @@
   .label Inventory
   .target{id: "#{ dom_id(character) }_props"}
     - character.props.each do |prop|
-      = render partial: 'props/prop', locals: { prop: prop, character: character }
+      = render partial: 'props/prop', locals: { prop: prop, character: character, for_stage: false }
