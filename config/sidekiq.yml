@@ -1,5 +1,6 @@
 :queues:
   - [command, 4]
-  - [notification 3]
-  - [environment 2]
+  - [default, 1]
+  - [notification, 1]
   - [mailers, 1]
+

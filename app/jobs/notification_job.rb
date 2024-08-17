@@ -1,18 +1,21 @@
 class NotificationJob < ApplicationJob
-  queue_as :default
+  queue_as :notification
 
   def perform(message, stage_id = nil)
-    if stage_id.present?
+    Rails.logger.debug("Notification job was called...")
+    if stage_id
       stage = Stage.find(stage_id)
-      stage.broadcast_append_to stage,
+      Command.new.broadcast_append_to stage,
                           partial: "notifications/notification",
-                          target: "notifications",
+                          target: "stage_#{ stage_id }_notifications",
                           locals: { message: }
     else
-      Command.new.broadcast_append_to :notifications,
-                          partial: "notifications/notification",
-                          target: "notifications",
-                          locals: { message: }
+      Stage.all.each do |s|
+        Command.new.broadcast_append_to stage,
+                            partial: "notifications/notification",
+                            target: "stage_#{ s.id }_notifications",
+                            locals: { message: }
+      end
     end
   end
 end

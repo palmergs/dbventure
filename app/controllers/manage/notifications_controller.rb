@@ -3,6 +3,7 @@ class Manage::NotificationsController < ManageController
   end
 
   def create
+    Rails.logger.debug("In notification create...")
     if create_params[:stage_id].present?
       stage = Stage.find(create_params[:stage_id])
       NotificationJob.perform_later(create_params[:message], stage.id)

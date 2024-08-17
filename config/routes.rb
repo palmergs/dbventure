@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users
+
+  mount Sidekiq::Web => "/sidekiq"
 
   get "manage" => "manage#index"
   namespace :manage do

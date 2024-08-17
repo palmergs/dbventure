@@ -21,6 +21,24 @@ class Command::Move < Command
         target: "stage_#{ new_stage.id }_notifications",
         locals: { message: "#{ actor.name } has arrived" }
 
+
+    if new_stage.actors.present?
+      Rails.logger.debug("There are actors here...")
+      new_stage.actors.each do |actor|
+        unless actor.user
+          if rand > 0.8
+            to = new_stage.passages_out.sample
+            Rails.logger.debug("Actor #{ actor } is going to move to #{ to }")
+            broadcast_append_to new_stage,
+                partial: 'notifications/notification',
+                target: "stage_#{ new_stage.id }_notifications",
+                locals: { message: "#{ actor.name } begins moving towards the #{ to.name }" }
+            MoveCommandJob.set(wait: 5.seconds).perform_later(actor_id: actor.id, passage_id: to.id)
+          end
+        end
+      end
+    end
+
     Command::Result.new(true)
   end
 end

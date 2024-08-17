@@ -7,7 +7,6 @@ class Game::ActorsController < ApplicationController
   end
 
   def show
-    @stage = current_user.character.stage
-    @actor = @stage.actors.find(params[:id])
+    @actor = Actor.find(params[:id])
   end
 end
