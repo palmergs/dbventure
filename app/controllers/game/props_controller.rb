@@ -7,7 +7,6 @@ class Game::PropsController < ApplicationController
   end
 
   def show
-    @stage = current_user.character.stage
     @prop = Prop.find(params[:id])
   end
 end

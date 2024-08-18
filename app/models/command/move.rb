@@ -23,7 +23,7 @@ class Command::Move < Command
 
 
     if new_stage.actors.present?
-      Rails.logger.debug("There are actors here...")
+      Rails.logger.debug("There are actors here when #{ actor.name } gets here...")
       new_stage.actors.each do |actor|
         unless actor.user
           if rand > 0.8
@@ -33,6 +33,8 @@ class Command::Move < Command
                 partial: 'notifications/notification',
                 target: "stage_#{ new_stage.id }_notifications",
                 locals: { message: "#{ actor.name } begins moving towards the #{ to.name }" }
+            NotificationJob.set(wait: 1.second).perform_later(message: "#{ actor.name } is heading towards the #{ to.name }", stage_id: to.from_id)
+            NotificationJob.set(wait: 2.second).perform_later(message: "#{ actor.name } is heading towards here", stage_id: to.to_id)
             MoveCommandJob.set(wait: 5.seconds).perform_later(actor_id: actor.id, passage_id: to.id)
           end
         end

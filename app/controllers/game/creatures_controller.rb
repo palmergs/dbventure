@@ -7,7 +7,6 @@ class Game::CreaturesController < ApplicationController
   end
 
   def show
-    @stage = current_user.character.stage
     @creature = Creature.find(params[:id])
   end
 end
