@@ -1,7 +1,7 @@
 module Stat
   BRAWN = :brawn
   GRACE = :grace
-  SMART = :smart
+  BRAIN = :brain
   CHARM = :charm
   FAITH = :faith
 

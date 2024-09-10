@@ -1,9 +1,11 @@
 class Roller
   attr_accessor :attr, :skill, :magic
 
-  def initialize attr=nil, skill=nil, magic=nil
+  def initialize attr=nil, level=nil, skill=nil, talent=nil, magic=nil
     @attr = attr
+    @level = level
     @skill = skill
+    @talent = talent
     @magic = magic
     
     @baps = []
@@ -31,7 +33,9 @@ class Roller
     return [] if attr.nil?
 
     results = roll_dice(:attr, attr, explode: false, bap: @adjs[:attr])
+    results += roll_dice(:level, level, explode: false, bap: @adjs[:level]) unless level.nil?
     results += roll_dice(:skill, skill, explode: true, bap: @adjs[:skill]) unless skill.nil?
+    resutls += roll_dice(:talent, talent, explode: false, bap: @adjs[:talent]) unless talent.nil?
     results += roll_dice(:magic, magic, explode: true, bap: @adjs[:magic]) unless magic.nil?
     results
   end
