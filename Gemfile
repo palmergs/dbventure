@@ -60,6 +60,9 @@ gem "devise", "~> 4.9"
 # Job runner
 gem "sidekiq", "~> 7.3"
 
+# String generator
+gem "eunomia_gen", git: "https://github.com/palmergs/eunomia-gen.git"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", "~> 1.9", platforms: %i[mri windows]

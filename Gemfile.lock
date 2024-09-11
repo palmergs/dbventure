@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/palmergs/eunomia-gen.git
+  revision: 034043aaf3354fa7534879d0e2da7359d6b28cc1
+  specs:
+    eunomia_gen (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -373,6 +379,7 @@ DEPENDENCIES
   bootsnap (~> 1.18)
   debug (~> 1.9)
   devise (~> 4.9)
+  eunomia_gen!
   factory_bot_rails (~> 6.4)
   faker (~> 3.4)
   font-awesome-sass (~> 6.5)

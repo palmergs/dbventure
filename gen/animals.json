@@ -1,0 +1,257 @@
+[
+  {
+    "key": "animal",
+    "items": [
+      { "segments": "[animal-domesticated]" },
+      { "segments": "[animal-pet]" },
+      { "segments": "[animal-urban]" },
+      { "segments": "[animal-wild]" },
+      { "segments": "[animal-prey]" },
+      { "segments": "[animal-primordial]" }
+    ]
+  },
+  {
+    "key": "animal-domesticated",
+    "items": [
+      { "segments": "alpaca", "tags": ["region:south-reach"] },
+      { "segments": "camel", "tags": ["region:irendi"] },
+      { "segments": "chicken" },
+      { "segments": "cow" },
+      { "segments": "donkey" },
+      { "segments": "duck" },
+      { "segments": "emu", "tags": ["region:topaz-steppes"] },
+      { "segments": "goat" },
+      { "segments": "goose" },
+      { "segments": "horse" },
+      { "segments": "llama", "tags": ["region:south-reach"] },
+      { "segments": "mule" },
+      { "segments": "ostrich", "tags": ["region:topaz-steppes"] },
+      { "segments": "ox" },
+      { "segments": "peacock", "tags": ["region:irendi"] },
+      { "segments": "pheasant" },
+      { "segments": "pig" },
+      { "segments": "pigeon" },
+      { "segments": "rabbit" },
+      { "segments": "sheep" },
+      { "segments": "turkey" }
+    ]
+  },
+  {
+    "key": "animal-pet",
+    "items": [{ "segments": "cat" }, { "segments": "dog" }]
+  },
+  {
+    "key": "animal-urban",
+    "items": [
+      { "segments": "mouse" },
+      { "segments": "pigeon" },
+      { "segments": "rat", "tags": ["creed:survival", "element:earth"] },
+      { "segments": "sparrow" },
+      { "segments": "squirrel", "tags": ["creed:survival", "element:earth"] }
+    ]
+  },
+  {
+    "key": "animal-wild",
+    "items": [
+      { "segments": "alligator", "tags": ["region:irendi"] },
+      { "segments": "badger", "tags": ["creed:defender", "element:earth"] },
+      { "segments": "bear", "tags": ["creed:warrior", "element:earth"] },
+      { "segments": "boar" },
+      { "segments": "cougar" },
+      { "segments": "coyote" },
+      { "segments": "fox", "tags": ["creed:trickster", "element:fire"] },
+      {
+        "segments": "hyena",
+        "tags": ["region:topaz-steppes", "creed:trickster", "element:fire"]
+      },
+      {
+        "segments": "jackal",
+        "tags": ["region:topaz-steppes", "region:irendi"]
+      },
+      { "segments": "jaguar", "tags": ["region:irendi"] },
+      { "segments": "lion", "tags": ["region:topaz-steppes"] },
+      { "segments": "lynx" },
+      { "segments": "otter" },
+      { "segments": "raccoon" },
+      {
+        "segments": "wolf",
+        "tags": ["name:masculine", "creed:warrior", "element:earth"]
+      },
+      { "segments": "wolverine" }
+    ]
+  },
+  {
+    "key": "animal-prey",
+    "items": [
+      {
+        "segments": "antelope",
+        "tags": ["region:topaz-steppes", "region:olean-plains"]
+      },
+      { "segments": "bison", "tags": ["region:olean-plains"] },
+      { "segments": "buffalo", "tags": ["region:irendi"] },
+      {
+        "segments": "caribou",
+        "tags": [
+          "region:quarterlands",
+          "region:northern-downs",
+          "region:shattered-lands",
+          "creed:traveler",
+          "element:earth"
+        ]
+      },
+      { "segments": "deer", "tags": ["region!topaz-steppes"] },
+      {
+        "segments": "elk",
+        "tags": ["region:quarterlands", "region:northern-downs"]
+      },
+      { "segments": "gazelle", "tags": ["region:topaz-steppes"] },
+      { "segments": "hare" },
+      {
+        "segments": "moose",
+        "tags": ["region:quarterlands", "region:northern-downs"]
+      },
+      {
+        "segments": "reindeer",
+        "tags": ["region:iron-reach", "region:shattered-lands"]
+      }
+    ]
+  },
+  {
+    "key": "animal-primordial",
+    "items": [
+      { "segments": "dire wolf", "tags": ["region:northern-downs"] },
+      { "segments": "mastadon", "tags": ["region:northern-downs"] },
+      { "segments": "sabertooth", "tags": ["region:northern-downs"] }
+    ]
+  },
+  {
+    "key": "bird-raptor",
+    "items": [
+      { "segments": "eagle" },
+      { "segments": "hawk", "tags": ["name:masculine"] },
+      { "segments": "falcon", "tags": ["creed:warrior", "element:air"] },
+      { "segments": "osprey" },
+      { "segments": "vulture", "tags": ["creed:survivor", "element:air"] }
+    ]
+  },
+  {
+    "key": "bird-wild",
+    "items": [
+      { "segments": "albatross", "tags": ["creed:traveler", "element:water"] },
+      { "segments": "crane" },
+      { "segments": "crow" },
+      { "segments": "flamingo", "tags": ["region:irendi"] },
+      { "segments": "heron" },
+      { "segments": "hummingbird" },
+      { "segments": "ibis" },
+      { "segments": "kingfisher" },
+      { "segments": "owl", "tags": ["creed:prophesy", "element:air"] },
+      { "segments": "parrot", "tags": ["region:irendi", "region:olean-sea"] },
+      { "segments": "pelican", "tags": ["region:olean-sea"] },
+      { "segments": "puffin", "tags": ["region:olean-sea"] },
+      {
+        "segments": "raven",
+        "tags": ["attr:masculine", "creed:trickster", "element:air"]
+      },
+      { "segments": "seagull", "tags": ["region:olean-sea"] },
+      { "segments": "stork" },
+      { "segments": "swan", "tags": ["attr:graceful"] },
+      { "segments": "woodpecker" }
+    ]
+  },
+  {
+    "key": "bird-songbird",
+    "items": [
+      { "segments": "blackbird" },
+      { "segments": "bluebird" },
+      { "segments": "cardinal" },
+      { "segments": "chickadee" },
+      { "segments": "finch" },
+      { "segments": "goldfinch" },
+      { "segments": "oriole" },
+      { "segments": "robin", "tags": ["name:feminine"] },
+      { "segments": "sparrow" },
+      { "segments": "starling", "tags": ["name:feminine"] },
+      { "segments": "thrush" },
+      { "segments": "warbler" },
+      { "segments": "wren", "tags": ["name:feminine"] }
+    ]
+  },
+  {
+    "key": "aquatic-prey",
+    "items": [
+      { "segments": "bass" },
+      { "segments": "carp" },
+      { "segments": "catfish", "tags": ["location:river"] },
+      {
+        "segments": "crab",
+        "tags": ["location:sea", "creed:defender", "element:sea"]
+      },
+      { "segments": "perch", "tags": ["location:lake"] },
+      { "segments": "pike" },
+      {
+        "segments": "salmon",
+        "tags": [
+          "location:sea",
+          "location:river",
+          "region:quaterland",
+          "region:levelin"
+        ]
+      },
+      {
+        "segments": "sturgeon",
+        "tags": ["location:river", "region:quaterland", "region:levelin"]
+      },
+      { "segments": "trout", "tags": ["location:river", "location:lake"] }
+    ]
+  },
+  {
+    "key": "aquatic-wild",
+    "items": [
+      { "segments": "dolphin", "tags": ["location:sea"] },
+      {
+        "segments": "porpoise",
+        "tags": ["location:sea", "creed:trickster", "element:sea"]
+      },
+      {
+        "segments": "sea turtle",
+        "tags": ["location:sea", "element:sea", "creed:prophesy"]
+      },
+      { "segments": "seal", "tags": ["location:sea", "region:quarterlands"] },
+      {
+        "segments": "shark",
+        "tags": ["location:sea", "creed:warrior", "element:sea"]
+      },
+      {
+        "segments": "walrus",
+        "tags": [
+          "location:sea",
+          "region:quarterlands",
+          "creed:survival",
+          "element:sea"
+        ]
+      },
+      { "segments": "whale", "tags": ["location:sea"] }
+    ]
+  },
+  {
+    "key": "insect",
+    "items": [
+      { "segments": "cricket", "tags": ["creed:trickster", "element:earth"] },
+      { "segments": "fire fly", "tags": ["creed:traveler", "element:fire"] },
+      { "segments": "grasshopper" },
+      { "segments": "honey bee", "tags": ["creed:defender", "element:fire"] },
+      { "segments": "scorpion", "tags": ["creed:warrior", "element:fire"] },
+      { "segments": "wasp", "tags": ["creed:warrior", "element:fire"] }
+    ]
+  },
+  {
+    "key": "avatar-elemental",
+    "items": [
+      { "segments": "basilisk", "tags": ["element:earth"] },
+      { "segments": "roc", "tags": ["element:air"] },
+      { "segments": "phoenix", "tags": ["element:fire"] },
+      { "segments": "leviathan", "tags": ["element:water"] }
+    ]
+  }
+]
